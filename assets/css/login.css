@@ -1,0 +1,10 @@
+.image-background{
+	background-color: #33D5FF;
+	min-height: 1080px;
+	position: absolute;
+}
+.form-login{
+	background-color: #fff;
+	margin: 160px auto;
+	position: relative;
+}

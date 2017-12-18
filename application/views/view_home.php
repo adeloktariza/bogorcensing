@@ -3,8 +3,9 @@
 
 <body>
 
-<div class="container">
-	HOME
+
+<div class="col-md-12 image_background">
+	
 </div>
 
 
