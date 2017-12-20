@@ -39,7 +39,7 @@ class Login extends CI_Controller {
 				redirect('home');
 			}
 			elseif ($this->session->userdata('level') == 0) {
-				redirect('home');
+				redirect('admin/adminController');
 			}		
 		}
 		else {

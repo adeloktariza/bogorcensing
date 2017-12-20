@@ -9,7 +9,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap-grid.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/login.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/home.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/custom.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/custom.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sb-admin.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sb-admin.min.css">
+
+
 	
 </head>
