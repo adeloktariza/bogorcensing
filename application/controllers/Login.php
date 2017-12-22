@@ -9,8 +9,20 @@ class Login extends CI_Controller {
 	}
 
 	public function index() {
-
-		$this->load->view('view_login_user');
+		if ($this->session->userdata('username') == "") {
+			$this->load->view('view_login_user');
+		}else{
+			if ($this->session->userdata('level') == 2) {
+				redirect('user/userController');
+			}
+			elseif ($this->session->userdata('level') == 1) {
+				redirect('home');
+			}
+			elseif ($this->session->userdata('level') == 0) {
+				redirect('admin/adminController');
+			}		
+		}
+		
 	}
 
 	public function cek_login() {

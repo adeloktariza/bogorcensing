@@ -1,3 +1,9 @@
+.parallax-mirror{
+    height: 100% !important;
+}
+#registerForm .parallax-window{
+    padding-top: 30px;
+}
 .image-frame{
 	position: absolute;
     width: 100%;
@@ -10,9 +16,14 @@
     object-fit: cover;
     background-size: cover;
     height: 100%;
-    filter: brightness(50%);
+    filter: brightness(80%);
 }
 .card-container.card {
+    max-width: 350px;
+    padding: 40px 40px;
+    border-radius: 18px;
+}
+.card-container.card-2{
     max-width: 350px;
     padding: 40px 40px;
     border-radius: 18px;
@@ -28,6 +39,20 @@
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
     margin-top: 50px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.card-2 {
+    background-color: #F7F7F7;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 0px;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -70,7 +95,12 @@
 }
 
 #inputUsername,
-#inputPassword {
+#inputPassword,
+#inputNIK,
+#inputName,
+#inputAddress,
+#inputNumber,
+#inputEmail {
     direction: ltr;
     height: 44px;
     font-size: 16px;
@@ -86,6 +116,8 @@
 
 .form-signin input[type=text],
 .form-signin input[type=password],
+.form-signin input[type=email],
+.form-signin input[type=number],
 .form-signin button {
     width: 100%;
     display: block;
