@@ -9,8 +9,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="<?php echo base_url('admin/adminController'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Dashboard</span>
           </a>
@@ -33,14 +33,14 @@
             <span class="nav-link-text">&nbsp;Kategori</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="admin panel">
+        <li class="nav-item  active" data-toggle="tooltip" data-placement="right" title="admin panel">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Admin Panel</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="<?php echo base_url('admin/adminController/page_register'); ?>">Tambah admin</a>
+              <a href="<?php echo base_url();?>/index.php/admin/adminController/page_register">Tambah admin</a>
             </li>
           </ul>
         </li>
@@ -73,76 +73,32 @@
 	        <li class="breadcrumb-item">
 	          <a href="#">Admin Panel</a>
 	        </li>
-	        <li class="breadcrumb-item active">Dashboard</li>
+	        <li class="breadcrumb-item active">Register</li>
 	      </ol>
 
 		    <div class="row">
-			  <div id="" class="box-wrap">
-	
-				    <div class="col-md-4 respon">
-				      <div class="bignotepad bignotepad- bignotepad-medium">
-				          <div class="bignotepad-inner">
-				              <div class="img-notepad">
-				                <img src="<?php echo base_url()?>assets/images/speaker.png" alt="eAZy Payment" />               
-				              </div>
-				              <div class="img-desc">
-				                <h3>LAPORAN</h3>
-				                <div class="bignotepad-copy text-desc">
-				                   Laporan dari seluruh user terhadap pelanggaran.
-				                </div> 
-				              </div>  
-				                              
-				              <div class="bignotepad-footer btn-position" >
-				                 <a href="/layanan/eazy-payment" class="btn btn-direct" target="_blank">
-				                    <span>Panel Laporan</span>
-				                 </a>
-				              </div>     
-				          </div>
-				      </div>
-				    </div>
-					<div class="col-md-4 respon">
-				      <div class="bignotepad bignotepad- bignotepad-medium">
-				          <div class="bignotepad-inner">
-				              <div class="img-notepad">
-				                <img src="<?php echo base_url()?>assets/images/news.png" alt="eAZy Payment" />               
-				              </div>
-				              <div class="img-desc">
-				                <h3>BERITA</h3>
-				                <div class="bignotepad-copy text-desc">
-				                   Berita tentang laporan yang telah ditindak lanjuti oleh instansi.
-				                </div> 
-				              </div>  
-				                              
-				              <div class="bignotepad-footer btn-position" >
-				                 <a href="/layanan/eazy-payment" class="btn btn-direct" target="_blank">
-				                    <span>Panel Berita</span>
-				                 </a>
-				              </div>     
-				          </div>
-				      </div>
-				    </div>	 	 
-					<div class="col-md-4 respon">
-				      <div class="bignotepad bignotepad- bignotepad-medium">
-				          <div class="bignotepad-inner">
-				              <div class="img-notepad">
-				                <img src="<?php echo base_url()?>assets/images/category.png" alt="eAZy Payment" />               
-				              </div>
-				              <div class="img-desc">
-				                <h3>KATEGORI</h3>
-				                <div class="bignotepad-copy text-desc">
-				                   kategori dari setiap laporan beserta instansi terkait.
-				                </div> 
-				              </div>  
-				                              
-				              <div class="bignotepad-footer btn-position" >
-				                 <a href="/layanan/eazy-payment" class="btn btn-direct" target="_blank">
-				                    <span>Panel Kategori</span>
-				                 </a>
-				              </div>     
-				          </div>
-				      </div>
-				    </div>	 
-			  </div>
+
+              <?php echo form_open("admin/adminController/register_admin"); ?>
+
+              <form class="form-signin">
+                    <input type="text" id="inputUsername" name="addUsername" class="form-control" placeholder="Username" required autofocus>
+
+                    <input type="password" id="inputPassword" name="addPassword" class="form-control" placeholder="Password" required>
+                    
+                    <input type="text" id="inputName" name="addName" class="form-control" placeholder="Nama" required>
+                    
+                    <input type="email" id="inputEmail" name="addEmail" class="form-control" placeholder="Email" required>
+                    
+                    <input type="text" id="inputNumber" name="addNumber" class="form-control" placeholder="Nomor Telepon" required>
+                    
+                    <input type="text" id="inputAddress" name="addAddress" class="form-control" placeholder="Alamat" required>
+                    
+
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">registrasi</button>
+
+                </form><!-- /form -->
+
+                <?php echo form_close(); ?>
 		    </div>
 			<!-- --------------------------------------------------------- -->
 	     

@@ -19,6 +19,12 @@
 		
 		}
 
+		public function add_admin($data) {
+
+			$this->db->insert('admin', $data);
+		
+		}
+
 		
 
 	}

@@ -9,10 +9,39 @@ class AdminController extends CI_Controller {
 			redirect('login');
 		}
 		$this->load->helper('text');
+		$this->load->model('model_register');
 	}
 	public function index() {
 		$data['username'] = $this->session->userdata('username');
 		$this->load->view('view_admin', $data);
+	}
+
+	public function page_register() {
+		$data['username'] = $this->session->userdata('username');
+		$this->load->view('view_admin_register', $data);
+	}
+	public function register_admin() {
+		$data = array('username' => $this->input->post('addUsername', TRUE),
+					  'password' => md5($this->input->post('addPassword', TRUE)),
+					  'level'    => 0 
+					 );
+
+
+		$hasil = $this->model_register->add_user($data);
+
+
+		$data2= array(
+					  'nama' => $this->input->post('addName', TRUE),
+					  'email' => $this->input->post('addEmail', TRUE),
+					  'no_telpon' => $this->input->post('addNumber', TRUE),
+					  'alamat' => $this->input->post('addAddress', TRUE),
+					  'id_user' => $hasil
+					 );
+
+		$hasil2 = $this->model_register->add_admin($data2);
+
+		redirect('admin/AdminController/page_register');
+
 	}
 
 	public function logout() {

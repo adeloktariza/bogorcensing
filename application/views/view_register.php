@@ -11,11 +11,17 @@
                 <p id="profile-name" class="profile-name-card">REGISTRASI</p>
                 <form class="form-signin">
                     <input type="text" id="inputUsername" name="addUsername" class="form-control" placeholder="Username" required autofocus>
+
                     <input type="password" id="inputPassword" name="addPassword" class="form-control" placeholder="Password" required>
+                    
                     <input type="number" id="inputNIK" name="addNik" class="form-control" placeholder="NIK" required>
+                    
                     <input type="text" id="inputName" name="addName" class="form-control" placeholder="Nama" required>
+                    
                     <input type="email" id="inputEmail" name="addEmail" class="form-control" placeholder="Email" required>
+                    
                     <input type="text" id="inputNumber" name="addNumber" class="form-control" placeholder="Nomor Telepon" required>
+                    
                     <input type="text" id="inputAddress" name="addAddress" class="form-control" placeholder="Alamat" required>
                     
                     
