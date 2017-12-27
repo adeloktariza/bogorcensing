@@ -10,6 +10,7 @@ class AdminController extends CI_Controller {
 		}
 		$this->load->helper('text');
 		$this->load->model('model_register');
+		$this->load->model('model_admin');
 	}
 	public function index() {
 		$data['username'] = $this->session->userdata('username');
@@ -71,6 +72,16 @@ class AdminController extends CI_Controller {
 		redirect('admin/AdminController/page_register');
 
 	}
+
+	 public function page_kategori() 
+    {
+    	$data['username'] = $this->session->userdata('username');
+
+    	$data['data_instansi'] = $this->model_admin->get_instansi();
+
+
+        $this->load->view('view_admin_kategori',$data);
+    }
 
 	public function logout() {
 		$this->session->unset_userdata('username');
