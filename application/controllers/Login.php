@@ -10,13 +10,13 @@ class Login extends CI_Controller {
 
 	public function index() {
 		if ($this->session->userdata('username') == "") {
-			$this->load->view('view_login_user');
+			$this->load->view('view_login');
 		}else{
 			if ($this->session->userdata('level') == 2) {
 				redirect('user/userController');
 			}
 			elseif ($this->session->userdata('level') == 1) {
-				redirect('home');
+				echo "Masuk user";
 			}
 			elseif ($this->session->userdata('level') == 0) {
 				redirect('admin/adminController');

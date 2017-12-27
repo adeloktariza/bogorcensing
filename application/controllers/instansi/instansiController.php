@@ -8,6 +8,7 @@ class InstansiController extends CI_Controller {
 			redirect('login');
 		}
 		$this->load->helper('text');
+		$this->load->model('model_register');
 	}
 	public function index() {
 		$data['username'] = $this->session->userdata('username');

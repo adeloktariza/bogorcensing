@@ -24,6 +24,11 @@
 			$this->db->insert('admin', $data);
 		
 		}
+		public function add_instansi($data) {
+
+			$this->db->insert('instansi', $data);
+		
+		}
 
 		
 

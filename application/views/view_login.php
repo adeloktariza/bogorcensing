@@ -26,7 +26,7 @@
             <a href="#" class="forgot-password">
                 Forgot the password?
             </a>
-            <a href="<?php echo base_url('register')?>" class="forgot-password">
+            <a href="<?php echo base_url('user/userController/page_register_user')?>" class="forgot-password">
                 Buat akun
             </a>
         </div>

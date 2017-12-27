@@ -16,9 +16,13 @@ class AdminController extends CI_Controller {
 		$this->load->view('view_admin', $data);
 	}
 
-	public function page_register() {
+	public function page_register_admin() {
 		$data['username'] = $this->session->userdata('username');
 		$this->load->view('view_admin_register', $data);
+	}
+	public function page_register_instansi() {
+		$data['username'] = $this->session->userdata('username');
+		$this->load->view('view_instansi_register', $data);
 	}
 	public function register_admin() {
 		$data = array('username' => $this->input->post('addUsername', TRUE),
@@ -39,6 +43,30 @@ class AdminController extends CI_Controller {
 					 );
 
 		$hasil2 = $this->model_register->add_admin($data2);
+
+		redirect('admin/AdminController/page_register');
+
+	}
+
+	public function register_instansi() {
+		$data = array('username' => $this->input->post('addUsername', TRUE),
+					  'password' => md5($this->input->post('addPassword', TRUE)),
+					  'level'    => 1 
+					 );
+
+
+		$hasil = $this->model_register->add_user($data);
+
+
+		$data2= array(
+					  'nama' => $this->input->post('addName', TRUE),
+					  'email' => $this->input->post('addEmail', TRUE),
+					  'no_telpon' => $this->input->post('addNumber', TRUE),
+					  'alamat' => $this->input->post('addAddress', TRUE),
+					  'id_user' => $hasil
+					 );
+
+		$hasil2 = $this->model_register->add_instansi($data2);
 
 		redirect('admin/AdminController/page_register');
 

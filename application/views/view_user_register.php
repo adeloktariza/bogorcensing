@@ -5,7 +5,7 @@
 
 		<div class="parallax-window" data-parallax="scroll" data-image-src="<?php echo base_url()?>assets/images/bogor.jpg">
 
-            <?php echo form_open("register/add_data"); ?>
+            <?php echo form_open("user/userController/add_user"); ?>
 
             <div class="card-2 card-container">
                 <p id="profile-name" class="profile-name-card">REGISTRASI</p>
