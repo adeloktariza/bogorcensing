@@ -16,7 +16,7 @@ class UserController extends CI_Controller {
 			$this->load->view('view_user_register', $data);
 		}else{
 			if ($this->session->userdata('level') == 2) {
-				redirect('user/userController');
+				redirect('user/userController/logout');
 			}
 			elseif ($this->session->userdata('level') == 1) {
 				redirect('home');

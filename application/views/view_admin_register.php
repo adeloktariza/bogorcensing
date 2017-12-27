@@ -40,7 +40,18 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="<?php echo base_url();?>/index.php/admin/adminController/page_register">Tambah admin</a>
+              <a href="<?php echo base_url();?>/index.php/admin/adminController/page_register_admin">Tambah admin</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="admin panel">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collaps-2" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">&nbsp;Instansi Panel</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collaps-2">
+            <li>
+              <a href="<?php echo base_url('admin/adminController/page_register_instansi'); ?>">Tambah instansi</a>
             </li>
           </ul>
         </li>
