@@ -84,7 +84,7 @@
 	        <li class="breadcrumb-item">
 	          <a href="#">Instansi</a>
 	        </li>
-	        <li class="breadcrumb-item active">Dashboard</li>
+	        <li class="breadcrumb-item active">Registrasi</li>
 	      </ol>
 
         <div class="row">

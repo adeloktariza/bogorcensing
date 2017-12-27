@@ -10,7 +10,7 @@
 		<?php echo form_open("login/cek_login"); ?>
 
 		<div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <img id="profile-img" class="profile-img-card" src="<?php echo base_url()?>assets/images/logo.png" />
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
@@ -23,9 +23,7 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                Forgot the password?
-            </a>
+
             <a href="<?php echo base_url('user/userController/page_register_user')?>" class="forgot-password">
                 Buat akun
             </a>
