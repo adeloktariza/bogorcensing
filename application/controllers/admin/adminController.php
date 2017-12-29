@@ -12,6 +12,7 @@ class AdminController extends CI_Controller {
 		$this->load->model('model_register');
 		$this->load->model('model_admin');
 	}
+
 	public function index() {
 		$data['username'] = $this->session->userdata('username');
 		$this->load->view('view_admin', $data);
@@ -21,10 +22,22 @@ class AdminController extends CI_Controller {
 		$data['username'] = $this->session->userdata('username');
 		$this->load->view('view_admin_register', $data);
 	}
+
 	public function page_register_instansi() {
 		$data['username'] = $this->session->userdata('username');
 		$this->load->view('view_instansi_register', $data);
 	}
+
+	public function page_kategori() 
+    {
+    	$data['username'] = $this->session->userdata('username');
+
+    	$data['data_instansi'] = $this->model_admin->get_instansi();
+
+
+        $this->load->view('view_admin_kategori',$data);
+    }
+
 	public function register_admin() {
 		$data = array('username' => $this->input->post('addUsername', TRUE),
 					  'password' => md5($this->input->post('addPassword', TRUE)),
@@ -73,15 +86,18 @@ class AdminController extends CI_Controller {
 
 	}
 
-	 public function page_kategori() 
-    {
-    	$data['username'] = $this->session->userdata('username');
+	public function add_kategori() {
+		$data = array('nama_kategori' => $this->input->post('addName', TRUE),
+					  'id_instansi'   => $this->input->post('addKategori', TRUE)
+					 );
 
-    	$data['data_instansi'] = $this->model_admin->get_instansi();
+		$hasil = $this->model_admin->add_kategori($data);
+
+		redirect('admin/AdminController/page_kategori');
+
+	}
 
 
-        $this->load->view('view_admin_kategori',$data);
-    }
 
 	public function logout() {
 		$this->session->unset_userdata('username');

@@ -89,12 +89,12 @@
 
         <div class="row">
 
-              <?php echo form_open("admin/adminController/get_instansi"); ?>
+              <?php echo form_open("admin/adminController/add_kategori"); ?>
 
               <form class="form-signin">
                   
                     <input type="text" id="inputName" name="addName" class="form-control" placeholder="Nama Kategori" required>
-                     <select class="form-control" name="addInstansi">
+                     <select class="form-control" name="addKategori">
                           <option  value="">---Pilih Instansi---</option>                    
                           <?php foreach($data_instansi->result() as $row) { ?>
                               <option value="<?php echo $row->id_instansi;?>"><?php echo $row->nama;?></option>

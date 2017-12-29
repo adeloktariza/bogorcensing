@@ -8,6 +8,11 @@
         
         return $result;
     }
+
+    public function add_kategori($data)
+    {
+        $this->db->insert('kategori', $data);
+    }
 }
 
 
