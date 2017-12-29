@@ -11,20 +11,9 @@ class UserController extends CI_Controller {
 
 	public function index() {
 		
+		$data['username'] = $this->session->userdata('username');
+		$this->load->view('view_user', $data);
 
-		if ($this->session->userdata('username') == "") {
-			$this->load->view('view_user_register', $data);
-		}else{
-			if ($this->session->userdata('level') == 2) {
-				redirect('user/userController/logout');
-			}
-			elseif ($this->session->userdata('level') == 1) {
-				redirect('home');
-			}
-			elseif ($this->session->userdata('level') == 0) {
-				redirect('admin/adminController');
-			}		
-		}
 	}
 
 	public function page_register_user() {

@@ -17,4 +17,30 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/sb-admin-datatables.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/sb-admin-charts.min.js"></script>
 
+
+<!-- Bootstrap Core JavaScript -->
+<script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="<?php echo base_url();?>assets/js/jquery.easing.1.3.js"></script>
+<script src="<?php echo base_url();?>assets/js/classie.js"></script>
+<script src="<?php echo base_url();?>assets/js/count-to.js"></script>
+<script src="<?php echo base_url();?>assets/js/jquery.appear.js"></script>
+<script src="<?php echo base_url();?>assets/js/owl.carousel.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/jquery.fitvids.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="<?php echo base_url();?>assets/js/jqBootstrapValidation.js"></script>
+<script src="<?php echo base_url();?>assets/js/contact_me.js"></script>
+
+<!-- Materialize js -->
+<script src="<?php echo base_url();?>assets/js/material.js"></script>
+<script src="<?php echo base_url();?>assets/js/waypoints.min.js"></script>
+
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="<?php echo base_url();?>assets/js/google-map-init.js"></script>
+
+<!-- Custom JavaScript -->
+<script src="<?php echo base_url();?>assets/js/script.js"></script>
 </html>
