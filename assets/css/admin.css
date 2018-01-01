@@ -120,9 +120,8 @@ body.sticky-footer .content-wrapper{
     margin-bottom: 10px;
     font-size: 16px;
     color: #414141;
-    background: #ebecec;
-    background: -webkit-linear-gradient(top, #f5f6f6, #ebecec);
-    background: linear-gradient(to bottom, #f5f6f6, #ebecec);
+    background: #007bff;
+    cursor: pointer;
 }
 .btn-direct {
     height: 32px;

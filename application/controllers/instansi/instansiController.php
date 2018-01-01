@@ -15,11 +15,5 @@ class InstansiController extends CI_Controller {
 		$this->load->view('view_instansi', $data);
 	}
 
-	public function logout() {
-		$this->session->unset_userdata('username');
-		$this->session->unset_userdata('level');
-		session_destroy();
-		redirect('login');
-	}
 }
 ?>

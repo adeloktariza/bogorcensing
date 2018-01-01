@@ -44,11 +44,6 @@ class UserController extends CI_Controller {
 		redirect('login');
 
 	}
-	public function logout() {
-		$this->session->unset_userdata('username');
-		$this->session->unset_userdata('level');
-		session_destroy();
-		redirect('login');
-	}
+	
 }
 ?>

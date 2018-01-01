@@ -4,6 +4,18 @@
     
     <!-- Start Off=Canvas Navigation Section -->
 
+            <div class="header-right">
+                <label for="open">
+                    <span class="hidden-desktop"></span>
+                </label>
+                <nav>
+                    <a href="#">Beranda</a>
+                    <a href="#laporan">Laporan</a>
+                    <a href="#">Berita</a>
+                    <a href="#">Kontak</a>
+                    <a href="<?php echo base_url('login/logout')?>">Keluar</a>
+                </nav>
+            </div>
     <!-- End Off-Canvas Navigation Section -->
     
     
@@ -14,14 +26,72 @@
         <div class="container">
             <div class="intro-text">
                 <h1>BOGOR <span>SENSING</span></h1>
-                <p>Lorem Ipsum is simply dummy text of the</br> printing and typesetting industry.</p>
-                <a href="#feature" class="page-scroll waves-effect btn btn-primary">Read More</a>
+                <p>wadah bagi masyarakat kota Bogor untuk melaporkan<br>suatu pelanggaran secara cepat dan mudah</p>
+                <a href="#laporan" class="">
+                    <button class="btn btn-user">Buat Laporan </button>
+                </a>
             </div>
         </div>
     </section>
     <!-- End Header Section -->
     
-    
+ <!-- Start Client Section -->
+    <section id="laporan" class="client-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center wow fadeInDown" data-wow-duration="2s" data-wow-delay="50ms">
+                        <h2>Our Clients</h2>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                 
+                <div class="col-md-12">
+                    <div class="testimonial-section">
+                        <div class="testimonial">
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                            <div class="testimonial-people pull-right">
+                                <img src="assets/images/clients/client_1.png" class="img-responsive" alt="Testimonial People">
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                            <div class="testimonial-people pull-right">
+                                <img src="assets/images/clients/client_2.png" class="img-responsive" alt="Testimonial People">
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                            <div class="testimonial-people pull-right">
+                                <img src="assets/images/clients/client_3.png" class="img-responsive" alt="Testimonial People">
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                            <div class="testimonial-people pull-right">
+                                <img src="assets/images/clients/client_4.png" class="img-responsive" alt="Testimonial People">
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                            <div class="testimonial-people pull-right">
+                                <img src="assets/images/clients/client_5.png" class="img-responsive" alt="Testimonial People">
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                            <div class="testimonial-people pull-right">
+                                <img src="assets/images/clients/client_6.png" class="img-responsive" alt="Testimonial People">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+    <!-- End Client Section -->    
     
     
     <!-- Start About Us Section -->
@@ -667,68 +737,7 @@
     <!-- End Latest News Section -->
     
     
-    
-    <!-- Start Client Section -->
-    <section id="client" class="client-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title text-center wow fadeInDown" data-wow-duration="2s" data-wow-delay="50ms">
-                        <h2>Our Clients</h2>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                 
-                <div class="col-md-12">
-                    <div class="testimonial-section">
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_1.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_2.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_3.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_4.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_5.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_6.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </section>
-    <!-- End Client Section -->
-    
-    
-    
-    
+ 
     <!-- Start Contact Us Section -->
     <section id="contact" class="contact contact-section">
         <div class="container">
