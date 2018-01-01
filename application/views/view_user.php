@@ -61,50 +61,51 @@
             </div>
             <div class="row">
                  
+                
+                
                 <div class="col-md-12 container-lapor">
                     <div class="col-md-6 form-lapor">
-
+                            <?php echo form_open("user/userController/add_laporan"); ?>
                             <form>
                                   <div class="form-group">
                                     <label for="exampleInputFile">Media input</label>
-                                    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                                    <small id="fileHelp" class="form-text text-muted"></small>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="exampleInputEmail1">Judul Laporan</label>
-                                    <input type="text" class="form-control" id="exampleInputJudul" placeholder="Masukkan Judul Laporan">
-                                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="exampleTextarea">Keterangan</label>
-                                    <textarea class="form-control" id="exampleTextarea" rows="4"></textarea>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <input type="file" class="form-control-file" id="profile-img" aria-describedby="fileHelp" name="gambar" onchange="previewImage();">
+                                    <small id="fileHelp" class="form-text text-muted">Ukuran maksimal gambar 1MB</small>
                                   </div>
                                   <div class="form-group">
                                     <label for="exampleSelect1">Kategori</label>
-                                    <select class="form-control" id="exampleSelect1">
+                                    <select class="form-control" id="exampleSelect1" name="addKategori">
                                         <?php foreach($data_kategori->result() as $row) { ?>
                                             <option value="<?php echo $row->id_kategori;?>"><?php echo $row->nama_kategori;?></option>
                                         <?php } ?>
                                     </select>
+                                     <small id="fileHelp" class="form-text text-muted">Pilih kategori sesuai pelanggaran</small>
                                   </div>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input type="checkbox" class="form-check-input">
-                                      Check me out
-                                    </label>
+                                  <div class="form-group">
+                                    <label for="exampleInputEmail1">Judul Laporan</label>
+                                    <input type="text" class="form-control" id="exampleInputJudul" placeholder="Masukkan Judul Laporan" name="judul">
+                                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                                   </div>
+                                  <div class="form-group">
+                                    <label for="exampleTextarea">Keterangan</label>
+                                    <textarea class="form-control" id="exampleTextarea" rows="4" name="keterangan" placeholder="Masukkan keterangan"></textarea>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="exampleTextarea">Lokasi Kejadian</label>
+                                    <textarea class="form-control" id="exampleTextarea" rows="2" name="lokasi"></textarea>
+                                  </div>
+                                  
                                   <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
-
-
+                            <?php echo form_close(); ?>
                     </div>
                     <div class="col-md-6 form-lapor">
-                        
+                            <div class="img-result">
+                                <img id="profile-img-tag" width="549" height="250"/>
+                            </div>
                     </div>
+                    
                   <!--   <div class="testimonial-section">
                         <div class="testimonial">
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
@@ -144,6 +145,8 @@
                         </div>
                     </div> -->
                 </div>
+
+                
             </div><!-- /.row -->
         </div><!-- /.container -->
     </section>
@@ -895,5 +898,25 @@
     </footer>
     <!-- End Footer Section -->
 </body>
+
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+                $("#profile-img").css("display", "block");
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#profile-img").change(function(){
+        readURL(this);
+    });
+    
+
+
+</script>
 
 <?php include 'includes/footer.php'; ?>

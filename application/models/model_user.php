@@ -6,12 +6,31 @@
 			$query = $this->db->get_where('user', $data);
 			return $query;
 		}
-		 public function get_kategori(){
+		public function get_kategori(){
 	        
 	        $result = $this->db->get('kategori');
 	        
 	        return $result;
 	    }
+	    public function get_nik($data){
+	        
+	        $this->db->select('nik')
+	        		->from('penduduk')
+                  	->join('user', 'user.id_user = penduduk.id_user');
+            
+
+            $query = $this->db->get();
+
+           	if ($query->num_rows() > 0) {
+         				return $query->row()->nik;
+     		}
+    		
+    		return false;
+
+	    }
+	    public function add_laporan($data){
+	    	$this->db->insert('laporan', $data);
+		}
 
 	}
 

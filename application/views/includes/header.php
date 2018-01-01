@@ -37,4 +37,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 	<script src="<?php echo base_url();?>assets/js/modernizr.custom.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
 </head>
