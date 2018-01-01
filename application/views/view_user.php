@@ -24,7 +24,7 @@
             <li><a href="#">Tentang Kami</a></li>
             <li><a href="#">Kontak</a></li>
 
-            <li class="f-right"><a href="#">Keluar</a></li>
+            <li class="f-right"><a href="<?php echo base_url('login/logout')?>">Keluar</a></li>
             <li class="f-right"><a href="#">Hai <?= $username?></a></li>    
         
         </ul> 
@@ -54,15 +54,58 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title text-center wow fadeInDown" data-wow-duration="2s" data-wow-delay="50ms">
-                        <h2>Our Clients</h2>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                        <h2>Ayo laporkan pelanggaran yang anda lihat</h2>
+                        <p>Dengan melaporkan pelanggaran yang anda ketahui, anda dapat membantu pemerintah dalam<br>meningkatkan pelayanan serta kenyamanan fasilitas umum</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                  
-                <div class="col-md-12">
-                    <div class="testimonial-section">
+                <div class="col-md-12 container-lapor">
+                    <div class="col-md-6 form-lapor">
+
+                            <form>
+                                  <div class="form-group">
+                                    <label for="exampleInputFile">Media input</label>
+                                    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                                    <small id="fileHelp" class="form-text text-muted"></small>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleInputEmail1">Judul Laporan</label>
+                                    <input type="text" class="form-control" id="exampleInputJudul" placeholder="Masukkan Judul Laporan">
+                                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleTextarea">Keterangan</label>
+                                    <textarea class="form-control" id="exampleTextarea" rows="4"></textarea>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleSelect1">Kategori</label>
+                                    <select class="form-control" id="exampleSelect1">
+                                        <?php foreach($data_kategori->result() as $row) { ?>
+                                            <option value="<?php echo $row->id_kategori;?>"><?php echo $row->nama_kategori;?></option>
+                                        <?php } ?>
+                                    </select>
+                                  </div>
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input type="checkbox" class="form-check-input">
+                                      Check me out
+                                    </label>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+
+
+                    </div>
+                    <div class="col-md-6 form-lapor">
+                        
+                    </div>
+                  <!--   <div class="testimonial-section">
                         <div class="testimonial">
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
                             <div class="testimonial-people pull-right">
@@ -99,7 +142,7 @@
                                 <img src="assets/images/clients/client_6.png" class="img-responsive" alt="Testimonial People">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div><!-- /.row -->
         </div><!-- /.container -->

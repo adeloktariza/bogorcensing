@@ -6,6 +6,12 @@
 			$query = $this->db->get_where('user', $data);
 			return $query;
 		}
+		 public function get_kategori(){
+	        
+	        $result = $this->db->get('kategori');
+	        
+	        return $result;
+	    }
 
 	}
 

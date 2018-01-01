@@ -266,3 +266,9 @@ label.mobile_menu span {
 .f-right {
 	float: right;
 }
+
+.container-lapor {
+
+	border:1px solid #000;
+	padding: 20px;
+}

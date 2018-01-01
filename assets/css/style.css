@@ -1336,15 +1336,15 @@ and (min-width : 551px){
 .client-section {
     padding-top: 80px;
     padding-bottom: 40px;
-    background-color: #28ABE3;
+    background-color: #f1f1f1;
 }
 
 .client-section .section-title h2 {
-    color: #fff;
+    color: #111;
 }
 
 .client-section .section-title p {
-    color: #fff;
+    color: #111;
 }
 
 
@@ -1725,8 +1725,8 @@ nav>a:hover{
 .section-title{
     font-size: 4em;
     margin-bottom: .3em;
-    text-shadow: 0 3px 0px black,
-                 0 4px 0px rgba(150,150,150,.5);
+   /* text-shadow: 0 3px 0px black,
+                 0 4px 0px rgba(150,150,150,.5);*/
 }
 .section-tagline{
     font-size: 1em;

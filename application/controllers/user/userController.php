@@ -6,12 +6,16 @@ class UserController extends CI_Controller {
 		parent::__construct();
 
 		$this->load->helper('text');
+		$this->load->model('model_user');
 		$this->load->model('model_register');
 	}
 
 	public function index() {
 		
 		$data['username'] = $this->session->userdata('username');
+
+		$data['data_kategori'] = $this->model_user->get_kategori();
+		
 		$this->load->view('view_user', $data);
 
 	}
