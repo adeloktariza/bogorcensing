@@ -2,15 +2,15 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald:300,400,700);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
  
-body {
+/*body {
     overflow-x: hidden;
     font-family: 'Open Sans', sans-serif;
     background-color: #f7f7f7;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-}
+}*/
 
-a {
+/*a {
     color: #28ABE3;
 }
 
@@ -20,7 +20,7 @@ a:active,
 a.active {
     //color: #ea321e;
     text-decoration: none;
-}
+}*/
 
 
 p {
@@ -1383,13 +1383,6 @@ and (min-width : 551px){
     padding-bottom: 100px;
 }
 
-
-
-.form-control {
-    border-radius: 0;
-    border: 2px solid #111;
-}
-
 .contact .form-group {
     margin-bottom: 25px;
     width: 100%;
@@ -1641,9 +1634,11 @@ footer {
 
 .header-left,
 .header-right{
-    position: relative;
+    position: fixed;
     color: white;
     float: left;
+    z-index: 99;
+    background-color: #000;
 }
 .header-left{
     width: 30%;

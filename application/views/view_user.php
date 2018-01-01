@@ -4,18 +4,31 @@
     
     <!-- Start Off=Canvas Navigation Section -->
 
-            <div class="header-right">
-                <label for="open">
-                    <span class="hidden-desktop"></span>
-                </label>
-                <nav>
-                    <a href="#">Beranda</a>
-                    <a href="#laporan">Laporan</a>
-                    <a href="#">Berita</a>
-                    <a href="#">Kontak</a>
-                    <a href="<?php echo base_url('login/logout')?>">Keluar</a>
-                </nav>
-            </div>
+    <div class="navigation-bar">
+             
+        <ul class="nav">  
+            <li><a href="#">Beranda</a></li>
+            <li class="dropdown"><a href="#">Laporan</a>         
+              <div class="fulldrop">              
+                <div class="column">
+                  <ul>
+                    <li><a href="#">List Laporan</a></li>
+                    <li><a href="#laporan">Tambah Laporan</a></li>
+                    <li><a href="#">Edit Laporan</a></li>
+                    <li><a href="#">Hapus Laporan</a></li>
+                  </ul>
+                </div> 
+              </div>
+            </li>
+            <li><a href="#">Berita</a></li>
+            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">Kontak</a></li>
+
+            <li class="f-right"><a href="#">Keluar</a></li>
+            <li class="f-right"><a href="#">Hai <?= $username?></a></li>    
+        
+        </ul> 
+    </div>
     <!-- End Off-Canvas Navigation Section -->
     
     
