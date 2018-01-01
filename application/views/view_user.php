@@ -3,22 +3,7 @@
 <body class="index">
     
     <!-- Start Off=Canvas Navigation Section -->
-    <div class="menu-wrap">
-		<nav class="menu">
-			<div class="icon-list">
-				<a href="#home" class="logo page-scroll waves-effect">Navigator</a>
-				<a href="#about-us" class="page-scroll waves-effect"><i class="fa fa-fw fa-user"></i><span>About Us</span></a>
-				<a href="#portfolio" class="page-scroll waves-effect"><i class="fa fa-fw fa-bell-o"></i><span>Portfolio</span></a>
-				<a href="#service" class="page-scroll waves-effect"><i class="fa fa-fw fa-bar-chart-o"></i><span>Services</span></a>
-				<a href="#team" class="page-scroll waves-effect"><i class="fa fa-fw fa-users"></i><span>Our Team</span></a>
-				<a href="#latest-news" class="page-scroll waves-effect"><i class="fa fa-fw fa-mortar-board"></i><span>Latest News</span></a>
-				<a href="#client" class="page-scroll waves-effect"><i class="fa fa-fw fa-comment-o"></i><span>Testimonial</span></a>
-				<a href="#contact" class="page-scroll waves-effect"><i class="fa fa-fw fa-envelope-o"></i><span>Contact</span></a>
-			</div>
-		</nav>
-		<button class="close-button" id="close-button">Close Menu</button>
-	</div>
-	<button class="menu-button waves-effect" id="open-button">Open Menu</button>
+
     <!-- End Off-Canvas Navigation Section -->
     
     
@@ -28,7 +13,7 @@
     <section class="header call-to-action" id="home">
         <div class="container">
             <div class="intro-text">
-                <h1>Welcome To The <span>Navigator</span></h1>
+                <h1>BOGOR <span>SENSING</span></h1>
                 <p>Lorem Ipsum is simply dummy text of the</br> printing and typesetting industry.</p>
                 <a href="#feature" class="page-scroll waves-effect btn btn-primary">Read More</a>
             </div>
