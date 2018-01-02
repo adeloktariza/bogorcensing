@@ -12,7 +12,7 @@
               <div class="fulldrop">              
                 <div class="column">
                   <ul>
-                    <li><a href="#">List Laporan</a></li>
+                    <li><a href="#list-laporan">List Laporan</a></li>
                     <li><a href="#laporan">Tambah Laporan</a></li>
                     <li><a href="#">Edit Laporan</a></li>
                     <li><a href="#">Hapus Laporan</a></li>
@@ -106,44 +106,7 @@
                             </div>
                     </div>
                     
-                  <!--   <div class="testimonial-section">
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_1.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_2.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_3.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_4.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_5.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                        <div class="testimonial">
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-                            <div class="testimonial-people pull-right">
-                                <img src="assets/images/clients/client_6.png" class="img-responsive" alt="Testimonial People">
-                            </div>
-                        </div>
-                    </div> -->
+                 
                 </div>
 
                 
@@ -154,45 +117,20 @@
     
     
     <!-- Start About Us Section -->
-    <section id="about-us" class="about-us-section-1">
+    <section id="list-laporan" class="about-us-section-1">
         <div class="container">
             <div class="row">
+                <?php foreach($data_laporan->result() as $row) { ?>
                 <div class="col-md-12 col-sm-12">
-                    <div class="section-title text-center">
-                            <h2>About Us</h2>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
-                        </div>
-                </div>
-            </div>
-            <div class="row">
-                
-                <div class="col-md-4 col-sm-4">
                     <div class="welcome-section text-center waves-effect">
-                        <img src="assets/images/photo-2.jpg" class="img-responsive" alt="..">
-                        <h4>Office Philosophy</h4>
-                        <div class="border"></div>
-                        <p>Duis aute irure dolor in reprehen derit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Lorem reprehenderit</p>
+                        <img src="<?= $row->media;?>.jpg" class="img-responsive" alt="..">
+                        <h4><?= $row->judul_laporan;?></h4>
+                        <span><?= $row->tgl_lapor;?></span>
+                        <p><?= $row->keterangan;?></p>
+                        <button class="btn btn-primary"><?= $row->status_laporan;?></button>
                     </div>
                 </div>
-                
-                <div class="col-md-4 col-sm-4">
-                    <div class="welcome-section text-center waves-effect">
-                        <img src="assets/images/photo-1.jpg" class="img-responsive" alt="..">
-                        <h4>Our Mission & Vission</h4>
-                        <div class="border"></div>
-                        <p>Duis aute irure dolor in reprehen derit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Lorem reprehenderit</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 col-sm-4">
-                    <div class="welcome-section text-center waves-effect">
-                        <img src="assets/images/photo-3.jpg" class="img-responsive" alt="..">
-                        <h4>Office Value & Rules</h4>
-                        <div class="border"></div>
-                        <p>Duis aute irure dolor in reprehen derit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Lorem reprehenderit</p>
-                    </div>
-                </div>
-                
+                <?php } ?>
             </div><!-- /.row -->            
             
         </div><!-- /.container -->
@@ -842,28 +780,7 @@
                 </div>
             </div>
         </div>
-        
     </section>
-    
-    
-    
-    
-    <!-- Start Map Section -->
-    <div class="google-map">
-        <div id="map"></div>
-        <div class="contact-info waves-effect">
-            <h4>Contact info</h4>
-            <ul>
-                <li><strong>E-mail :</strong> your-email@mail.com</li>
-                <li><strong>Phone :</strong> +8801-6778776</li>
-                <li><strong>Mobile :</strong> +8801-45565378</li>
-                <li><strong>Web :</strong> yourdomain.com</li>
-            </ul>
-        </div>
-    </div>
-    <!-- End Map Section -->
-    
-    
     
     <!-- Start Footer Section -->
     <footer>

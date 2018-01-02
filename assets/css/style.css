@@ -500,13 +500,15 @@ li {
 
 .welcome-section {
 	background-color: #fff;
+    width: 100%;
     padding-bottom: 40px;
     box-shadow: 0 0 3px #ccc;
-    padding: 30px;
+    padding: 10px;
 }
 
 .welcome-section img {
-    width: 100%;
+    width: 20%;
+    float: left;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -o-border-radius: 2px;
@@ -515,17 +517,36 @@ li {
 
 
 .welcome-section h4 {
-    padding-top: 20px;
+    float: left;
     color: #777;
+    margin-left: 20px;
+    width: 73%;
+    text-align: start;
+}
+.welcome-section span {
+    float: left;
+    color: #777;
+    margin-left: 20px;
+    width: 73%;
+    text-align: start;
+    margin-bottom: 10px;
 }
 
 .welcome-section p {
-    padding-top: 20px;
+    margin-left: 20px;
+    float: left;
     color: #999;
+    width: 66%;
+    text-align: start;
+}
+.welcome-section button {
+    float: right;
+    margin-top: 25px;
 }
 
 .welcome-section:hover .border {
     margin: 0 40%;
+    float: left;
 }
 
 

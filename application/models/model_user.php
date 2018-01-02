@@ -28,6 +28,12 @@
     		return false;
 
 	    }
+	    public function get_laporan(){
+	        
+	        $result = $this->db->get('laporan');
+	        
+	        return $result;
+	    }
 	    public function add_laporan($data){
 	    	$this->db->insert('laporan', $data);
 		}

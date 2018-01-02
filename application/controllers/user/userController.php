@@ -21,6 +21,7 @@ class UserController extends CI_Controller {
 		
 		$data['username'] = $this->session->userdata('username');
 		$data['id_user'] = $this->session->userdata('id_user');
+		$data['data_laporan'] = $this->model_user->get_laporan();
 
 		$data['data_kategori'] = $this->model_user->get_kategori();
 		
@@ -106,6 +107,6 @@ class UserController extends CI_Controller {
 
  	
 	}
-	
+
 }
 ?>
