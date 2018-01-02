@@ -113,5 +113,15 @@ class UserController extends CI_Controller {
  	
 	}
 
+	public function delete_laporan() {
+
+		$data= $this->uri->segment(4);
+
+		$del = $this->model_user->delete_laporan($data);
+
+		redirect('user/userController');
+
+	}
+
 }
 ?>

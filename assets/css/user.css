@@ -273,4 +273,28 @@ label.mobile_menu span {
 }
 .img-result {
 	margin-bottom: 44px;
+	background-image: url('../images/default.png');
+	object-fit: cover;
+}
+
+#modal .modal-img{
+	width: 100%;
+	text-align: center;
+}
+#modal .modal-img img{
+	width: 43%;
+}
+#modal p{
+	float: left;
+	font-size: 16px;
+	margin-top: 10px;
+}
+#modal .btn.btn-danger{
+	background-color: #dc3545 !important;
+	color: #fff;
+}
+
+#modal span {
+	font-size: 14px;
+    color: #000;
 }

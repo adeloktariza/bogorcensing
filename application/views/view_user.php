@@ -84,23 +84,26 @@
                                     <input type="text" class="form-control" id="exampleInputJudul" placeholder="Masukkan Judul Laporan" name="judul">
                                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                                   </div>
+
+                                  <div class="form-group">
+                                    <label for="exampleTextarea">Lokasi Kejadian</label>
+                                    <textarea class="form-control" id="exampleTextarea" rows="1" name="lokasi"></textarea>
+                                  </div>
+
                                   <div class="form-group">
                                     <label for="exampleTextarea">Keterangan</label>
                                     <textarea class="form-control" id="exampleTextarea" rows="4" name="keterangan" placeholder="Masukkan keterangan"></textarea>
                                   </div>
 
-                                  <div class="form-group">
-                                    <label for="exampleTextarea">Lokasi Kejadian</label>
-                                    <textarea class="form-control" id="exampleTextarea" rows="2" name="lokasi"></textarea>
-                                  </div>
                                   
-                                  <button type="submit" class="btn btn-primary">Submit</button>
+                                  
+                                  <button type="submit" class="btn btn-primary">Kirim</button>
                             </form>
                             <?php echo form_close(); ?>
                     </div>
                     <div class="col-md-6 form-lapor">
                             <div class="img-result">
-                                <img id="profile-img-tag" width="549" height="250"/>
+                                <img id="profile-img-tag" width="549" height="310"/>
                             </div>
                     </div>
                     
@@ -122,7 +125,7 @@
                     if($data_laporan){
                         foreach($data_laporan as $row) {
                 ?>
-                            <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12" id="<?= $row->id_laporan;?>" data-toggle="modal" data-target="#<?= $row->id_laporan;?>-modal" >
                                 <div class="welcome-section text-center waves-effect">
                                     <img src="<?= $row->media;?>.jpg" class="img-responsive" alt="..">
                                     <h4><?= $row->judul_laporan;?></h4>
@@ -146,38 +149,64 @@
     <!-- End About Us Section -->
  
     <!-- Start Portfolio Modal Section -->
-    <div class="section-modal modal fade" id="portfolio-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
+    <section id="modal" class="about-us-section-1">
+    <?php
+        if($data_laporan){
+            foreach($data_laporan as $row) {
+    echo "
+    
+    <div class='modal fade bd-example-modal-lg' tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true' id='$row->id_laporan-modal'>
+      <div class='modal-dialog modal-lg'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLongTitle'> $row->judul_laporan</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>×</span>
+            </button>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>
+          <div class='modal-body'>
+            <div class='modal-img'>
+                <img src='$row->media.jpg' class='img-responsive' alt='..''>
             </div>
             
-            <div class="container">
-                <div class="row">
-                    <div class="section-title text-center">
-                        <h2>Portfolio Details</h2>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate</p>
-                    </div>
-                </div>
-                <div class="row">
-                    
-                    <div class="col-md-6">
-                        <img src="assets/images/portfolio/port-1.jpg" class="img-responsive" alt="..">
-                    </div>
-                    <div class="col-md-6">
-                        <img src="assets/images/portfolio/port-2.jpg" class="img-responsive" alt="..">
-                    </div>
-                    
-                </div><!-- /.row -->
-            </div>                
+            <span>Tanggal Lapor : $row->tgl_lapor</span>
+            <p>$row->keterangan</p>
+          </div>
+          <div class='modal-footer'>";
+            
+            if($row->status_laporan == "terkirim"){
+                echo "
+                <a href='userController/delete_laporan/$row->id_laporan'>
+                    <button type='button' class='btn btn-danger'>Hapus</button>
+                </a>
+                    ";
+            }
+
+            echo"
+
+            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Keluar</button>
+            
+          </div>
         </div>
+      </div>
     </div>
+    ";
+
+        }
+
+    }else{ 
+    
+
+    } ?>
+
+    
     <!-- End Portfolio Modal Section -->
     
-    
+    </div>
+    </section>
 
  
 
@@ -226,9 +255,34 @@
     $("#profile-img").change(function(){
         readURL(this);
     });
-    
+</script>
 
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
 
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 </script>
 
 <?php include 'includes/footer.php'; ?>

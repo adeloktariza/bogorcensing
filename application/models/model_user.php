@@ -48,6 +48,12 @@
 	    	$this->db->insert('laporan', $data);
 		}
 
+		public function delete_laporan($data){
+
+	    	$this->db->where('id_laporan', $data);
+			$this->db->delete('laporan');
+		}
+
 	}
 
 ?>
