@@ -65,11 +65,11 @@
                 
                 <div class="col-md-12 container-lapor">
                     <div class="col-md-6 form-lapor">
-                            <?php echo form_open("user/userController/add_laporan"); ?>
+                            <?php echo form_open_multipart("user/userController/add_laporan"); ?>
                             <form>
                                   <div class="form-group">
                                     <label for="exampleInputFile">Media input</label>
-                                    <input type="file" class="form-control-file" id="profile-img" aria-describedby="fileHelp" name="gambar" onchange="previewImage();">
+                                    <input type="file" class="form-control-file" id="profile-img" aria-describedby="fileHelp" name="gambar" onchange="previewImage();" enctype="multipart/form-data">
                                     <small id="fileHelp" class="form-text text-muted">Ukuran maksimal gambar 1MB</small>
                                   </div>
                                   <div class="form-group">

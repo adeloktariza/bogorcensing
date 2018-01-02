@@ -2,6 +2,8 @@
 
 class UserController extends CI_Controller {
 
+	var $gallery_path;
+
 	public function __construct() {
 		parent::__construct();
 
@@ -10,6 +12,9 @@ class UserController extends CI_Controller {
 		$this->load->model('model_register');
 		$this->load->library('form_validation');
 		$this->load->helper('date');
+		$this->load->helper(array('form', 'url'));
+
+		$this->gallery_path = realpath(APPPATH .'../assets/images/');
 	}
 
 	public function index() {
@@ -54,32 +59,32 @@ class UserController extends CI_Controller {
 
 	public function add_laporan(){
   	
-  	$data['id_user'] = $this->session->userdata('id_user');
-  	$nik = $this->model_user->get_nik($data);
+	  	$data['id_user'] = $this->session->userdata('id_user');
+	  	$nik = $this->model_user->get_nik($data);
 
-  	//berfungsi saat submit ditekan namun file kosong supaya tidak masuk ke database
+	  	//berfungsi saat submit ditekan namun file kosong supaya tidak masuk ke database
 
 
-	  	$this->load->library('upload');
+
 	  	$namafile = "file_".time();
 
 	  	//konfigurasi ukuran dan type yang bisa di upload
-	  	$config = array(
-	  						'upload_path' => "./assets/images/laporan/", //mengatur lokasi penyimpanan gambar
-	  						'allowed_types' => "gif|jpg|png|jpeg|pdf", // mengatur type yang boleh disimpan
-	  						'overwrite' => TRUE,
-	  						'max_size' => "2048000",//maksimal ukuran file yang bisa diupload, disini menggunankan 2MB
-	  						'max_height' => "1080",
-	  						'max_width' => "1920",
-	  						'file_name' => $namafile //nama file yang akan terimpan nanti 
-	  			);
+	  	$config['upload_path'] = './assets/images/laporan/'; //path folder
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|JPG|PNG'; //type yang dapat diakses bisa anda sesuaikan
+        $config['file_name'] = $namafile; //nama yang terupload nantinya
+ 
+        $this->load->library('upload',$config);
 
-	  	$this->upload->initialize($config);
+       if (!$this->upload->do_upload('gambar')) {
+            $error = $this->upload->display_errors();
+            // menampilkan pesan error
+            print_r($error);
+        } else {
+            $result = $this->upload->data();
+        }
 
-	  	$gambar = $this->upload->data();
-
+        $gambar = base_url().'assets/images/laporan/'.$config['file_name'];
 	  	
-
 	  	$now = date('Y-m-d H:i:s');
 
 	  	$data2= array('judul_laporan' => $this->input->post('judul', TRUE),
@@ -87,7 +92,7 @@ class UserController extends CI_Controller {
 					  'id_kategori' => $this->input->post('addKategori', TRUE),
 					  'nik' => $nik,
 					  'tgl_lapor' => $now,
-					  'media' => $gambar['file_name'],
+					  'media' => $gambar,
 					  'lokasi_kejadian' => $this->input->post('lokasi', TRUE),
 					  'status_laporan' => "terkirim"
 
