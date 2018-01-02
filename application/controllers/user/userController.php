@@ -66,7 +66,11 @@ class UserController extends CI_Controller {
 	public function add_laporan(){
   	
 	  	$data['id_user'] = $this->session->userdata('id_user');
-	  	$nik = $this->model_user->get_nik($data);
+
+
+	  	$id = $this->session->userdata('id_user');
+
+		$nik = $this->model_user->get_nik($id);
 
 	  	//berfungsi saat submit ditekan namun file kosong supaya tidak masuk ke database
 

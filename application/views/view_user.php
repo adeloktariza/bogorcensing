@@ -131,7 +131,13 @@
                                     <h4><?= $row->judul_laporan;?></h4>
                                     <span><?= $row->tgl_lapor;?></span>
                                     <p><?= $row->keterangan;?></p>
-                                    <button class="btn btn-primary"><?= $row->status_laporan;?></button>
+                                    <?php if($row->status_laporan == "terkirim"){?>
+                                        <button class="btn btn-secondary"><?= $row->status_laporan;?></button>
+                                    <?php } else if($row->status_laporan == "validasi"){?>
+                                        <button class="btn btn-info"><?= $row->status_laporan;?></button>
+                                    <?php } else if($row->status_laporan == "verifikasi"){?>
+                                        <button class="btn btn-success"><?= $row->status_laporan;?></button>
+                                    <?php }?>
                                 </div>
                             </div>
                 <?php   }
@@ -161,11 +167,9 @@
           <div class='modal-header'>
             <h5 class='modal-title' id='exampleModalLongTitle'> $row->judul_laporan</h5>
             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                    <span aria-hidden='true'>×</span>
+                    <span aria-hidden='true'>X</span>
             </button>
-            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-              <span aria-hidden='true'>&times;</span>
-            </button>
+
           </div>
           <div class='modal-body'>
             <div class='modal-img'>

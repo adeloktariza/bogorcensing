@@ -293,6 +293,26 @@ label.mobile_menu span {
 	background-color: #dc3545 !important;
 	color: #fff;
 }
+#modal .btn.btn-info{
+	background-color: #17a2b8!important;
+	color: #fff;
+}
+#modal .btn.btn-success{
+	background-color: #dc3545 !important;
+	color: #fff;
+}
+#modal .btn.btn-warning{
+	background-color: #dc3545 !important;
+	color: #fff;
+}
+#list-laporan .btn.btn-info{
+	background-color: #17a2b8!important;
+	color: #fff;
+}
+#list-laporan .btn.btn-secondary{
+	background-color: #868e96 !important;
+	color: #fff;
+}
 
 #modal span {
 	font-size: 14px;
