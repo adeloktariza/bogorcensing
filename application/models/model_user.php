@@ -47,6 +47,11 @@
 	    public function add_laporan($data){
 	    	$this->db->insert('laporan', $data);
 		}
+		public function update_laporan($data, $id){
+
+			$this->db->where("id_laporan",$id);
+			$this->db->update("laporan",$data);
+		}
 
 		public function delete_laporan($data){
 

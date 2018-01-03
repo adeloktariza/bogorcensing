@@ -117,6 +117,67 @@ class UserController extends CI_Controller {
  	
 	}
 
+	public function update_laporan() {
+
+		$id= $this->uri->segment(4);
+
+		
+
+		if ($_FILES['gambar']['name'] == "" && $_FILES['gambar']['size'] == 0)
+		{
+    			$now = date('Y-m-d H:i:s');
+
+			  	$data2= array('judul_laporan' => $this->input->post('judul', TRUE),
+							  'keterangan' => $this->input->post('keterangan', TRUE),
+							  'id_kategori' => $this->input->post('addKategori', TRUE),
+							  'tgl_lapor' => $now,
+							  'lokasi_kejadian' => $this->input->post('lokasi', TRUE),
+							  'status_laporan' => "terkirim"
+							 );
+
+			  	$hasil3 = $this->model_user->update_laporan($data2,$id);
+				
+
+		}else{
+			$namafile = "file_".time();
+		  	//konfigurasi ukuran dan type yang bisa di upload
+		  	$config['upload_path'] = './assets/images/laporan/'; //path folder
+	        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|JPG|PNG'; //type yang dapat diakses bisa anda sesuaikan
+	        $config['file_name'] = $namafile; //nama yang terupload nantinya
+	 
+	        $this->load->library('upload',$config);
+
+	        if (!$this->upload->do_upload('gambar')) {
+	            $error = $this->upload->display_errors();
+	            // menampilkan pesan error
+	            print_r($error);
+	        } else {
+	            $result = $this->upload->data();
+	        }
+
+	        $gambar = base_url().'assets/images/laporan/'.$config['file_name'];
+		  	
+		  	$now = date('Y-m-d H:i:s');
+
+		  	$data2= array('judul_laporan' => $this->input->post('judul', TRUE),
+						  'keterangan' => $this->input->post('keterangan', TRUE),
+						  'id_kategori' => $this->input->post('addKategori', TRUE),
+						  'tgl_lapor' => $now,
+						  'media' => $gambar,
+						  'lokasi_kejadian' => $this->input->post('lokasi', TRUE),
+						  'status_laporan' => "terkirim"
+						 );
+
+			$hasil3 = $this->model_user->update_laporan($data2,$id);
+			
+
+		}
+
+		redirect('user/userController');
+
+
+	}
+
 	public function delete_laporan() {
 
 		$data= $this->uri->segment(4);
