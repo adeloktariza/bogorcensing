@@ -45,6 +45,38 @@
         $this->db->delete('kategori');
         
     }
+
+    public function get_admin($data)
+    {
+        $this->db->select('*')
+                 ->from('admin')
+                 ->join('user', 'user.id_user = admin.id_user');
+                   
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+                    return $query->result();
+        }
+        
+        return false;
+    }
+
+    public function get_dinas()
+    {
+        $this->db->select('*')
+                 ->from('instansi')
+                 ->join('user', 'user.id_user = instansi.id_user');
+                   
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+                    return $query->result();
+        }
+        
+        return false;
+    }
 }
 
 

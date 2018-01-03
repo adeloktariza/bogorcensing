@@ -87,7 +87,7 @@
 	        <li class="breadcrumb-item active">Registrasi</li>
 	      </ol>
 
-        <div class="row">
+<!--         <div class="row">
 
               <?php echo form_open("admin/adminController/register_instansi"); ?>
 
@@ -107,13 +107,102 @@
 
                     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">registrasi</button>
 
-                </form><!-- /form -->
+                </form>
+
+                <?php echo form_close(); ?>
+        </div> -->
+			<!-- --------------------------------------------------------- -->
+
+
+      <div class="row wrap-section">
+          <div class="col-md-6 form-add-kategori">
+
+              <?php echo form_open("admin/adminController/register_instansi"); ?>
+
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" id="inputUsername" name="addUsername" class="form-control" placeholder="Username" required autofocus>
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" id="inputPassword" name="addPassword" class="form-control" placeholder="Password" required>
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nama Lengkap</label>
+                    <input type="text" id="inputName" name="addName" class="form-control" placeholder="Nama" required>
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" id="inputEmail" name="addEmail" class="form-control" placeholder="Email" required>
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nomor Telepon</label>
+                    <input type="text" id="inputNumber" name="addNumber" class="form-control" placeholder="Nomor Telepon" required>
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Alamat</label>
+                    <input type="text" id="inputAddress" name="addAddress" class="form-control" placeholder="Alamat" required>
+                   
+                  </div>
+                  
+
+                  <button type="submit" class="btn btn-primary">Tambah</button>
+              </form>
 
                 <?php echo form_close(); ?>
         </div>
-			<!-- --------------------------------------------------------- -->
 	     
 	    </div>
+
+       <div class="row wrap-section">
+          <div class="col-md-11 form-add-kategori">
+              <table class="table table-bordered">
+
+
+                  <thead>
+                      <tr>
+                          <th>No</th>
+                          <th>username</th>
+                          <th>Nama Instansi</th>
+                          <th>Email</th>
+                          <th width="200px">Aksi</th>
+                      </tr>
+                  </thead>
+
+
+                  <tbody>
+                    <?php 
+
+                    $i = 1;
+
+                    foreach($data_dinas as $di) { ?>
+                        <tr>
+                          <th class="col1"><?= $i; ?></th>
+                          <th><?= $di->username; ?></th>
+                          <th><?= $di->nama;?></th>
+                          <th><?= $di->email;?></th>
+                          <th class="colbtn" width="200px">
+
+                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $di->id_instansi;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
+                              <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#<?= $di->id_instansi;?>-m-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+
+
+                          </th>
+                        </tr>
+
+                    <?php $i++; }?>
+                  </tbody>
+              </table>
+
+          </div>
+       </div>
 
 
    	</div>
@@ -121,6 +210,84 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+
+    <?php foreach($data_dinas as $di) { ?>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_kategori;?>-m-hapus">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLongTitle'>Hapus Data</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>X</span>
+            </button>
+
+          </div>
+          <div class='modal-body'>
+              <p>Apakah anda yakin untuk menghapus Instansi <?= $di->nama;?></p>
+          </div>
+          <div class='modal-footer'>
+            
+            <a href='<?php echo base_url('admin/adminController/update_kategori')?>/<?= $kat->id_kategori;?>'>
+                <button type='button' class='btn btn-primary'>Ya</button>
+            </a>
+
+            <button type='button' class='btn btn-primary' data-dismiss='modal'>Tidak</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <?php }?>
+
+    <?php foreach($data_dinas as $di) { ?>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_kategori;?>-m-edit">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLongTitle'>Edit Data</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>X</span>
+            </button>
+
+          </div>
+          <div class='modal-body'>
+            <?php echo form_open("admin/adminController/update_kategori/$kat->id_kategori"); ?>
+
+              <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nama Kategori</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Nama Kategori" name="addName" value="<?= $kat->nama_kategori?>">
+                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect1">Kategori</label>
+                    <select class="form-control" name="addKategori">
+                          <option  value="<?= $kat->id_instansi;?>"><?= $kat->nama;?></option>                    
+                          <?php foreach($data_instansi->result() as $row) { ?>
+                              <option value="<?php echo $row->id_instansi;?>"><?php echo $row->nama;?></option>
+                          <?php } ?>
+                    </select>
+                     <small id="fileHelp" class="form-text text-muted">Pilih kategori sesuai pelanggaran</small>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <button type='button' class='btn btn-primary' data-dismiss='modal'>Keluar</button>
+              </form>
+
+            <?php echo form_close(); ?>
+
+          </div>
+          <div class='modal-footer'>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <?php }?>
     <!-- Logout Modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -143,4 +310,3 @@
 </body>
 
 <?php include 'includes/footer.php'; ?>
-

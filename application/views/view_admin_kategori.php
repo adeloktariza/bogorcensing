@@ -200,16 +200,15 @@
 
           </div>
           <div class='modal-body'>
-            
-            
+              <p>Apakah anda yakin untuk menghapus kategori <?= $kat->nama_kategori;?></p>
           </div>
           <div class='modal-footer'>
             
-            <a href='<?php echo base_url('admin/adminController/update_kategori')?>/<?= $kat->id_kategori;?>'>
-                <button type='button' class='btn btn-secondary'>Simpan</button>
+            <a href='<?php echo base_url('admin/adminController/delete_kategori')?>/<?= $kat->id_kategori;?>'>
+                <button type='button' class='btn btn-primary'>Ya</button>
             </a>
 
-            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Keluar</button>
+            <button type='button' class='btn btn-primary' data-dismiss='modal'>Tidak</button>
             
           </div>
         </div>
@@ -224,7 +223,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class='modal-header'>
-            <h5 class='modal-title' id='exampleModalLongTitle'>Hapus Data</h5>
+            <h5 class='modal-title' id='exampleModalLongTitle'>Edit Data</h5>
             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                     <span aria-hidden='true'>X</span>
             </button>

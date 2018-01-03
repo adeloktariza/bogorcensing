@@ -20,11 +20,24 @@ class AdminController extends CI_Controller {
 
 	public function page_register_admin() {
 		$data['username'] = $this->session->userdata('username');
+		$data['id_user'] = $this->session->userdata('id_user');
+
+		$id = $this->session->userdata('id_user');
+
+		$data['data_admin'] = $this->model_admin->get_admin($id);
+
+
 		$this->load->view('view_admin_register', $data);
 	}
 
 	public function page_register_instansi() {
 		$data['username'] = $this->session->userdata('username');
+		$data['id_user'] = $this->session->userdata('id_user');
+
+		$id = $this->session->userdata('id_user');
+
+		$data['data_dinas'] = $this->model_admin->get_dinas();
+
 		$this->load->view('view_instansi_register', $data);
 	}
 
@@ -60,7 +73,7 @@ class AdminController extends CI_Controller {
 
 		$hasil2 = $this->model_register->add_admin($data2);
 
-		redirect('admin/AdminController/page_register');
+		redirect('admin/adminController/page_register_admin');
 
 	}
 

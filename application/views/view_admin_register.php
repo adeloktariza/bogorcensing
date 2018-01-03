@@ -87,32 +87,100 @@
 	        <li class="breadcrumb-item active">Register</li>
 	      </ol>
 
-		    <div class="row">
+		    <div class="row wrap-section">
+          <div class="col-md-6 form-add-kategori">
 
               <?php echo form_open("admin/adminController/register_admin"); ?>
 
-              <form class="form-signin">
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
                     <input type="text" id="inputUsername" name="addUsername" class="form-control" placeholder="Username" required autofocus>
-
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
                     <input type="password" id="inputPassword" name="addPassword" class="form-control" placeholder="Password" required>
-                    
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nama Lengkap</label>
                     <input type="text" id="inputName" name="addName" class="form-control" placeholder="Nama" required>
-                    
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
                     <input type="email" id="inputEmail" name="addEmail" class="form-control" placeholder="Email" required>
-                    
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nomor Telepon</label>
                     <input type="text" id="inputNumber" name="addNumber" class="form-control" placeholder="Nomor Telepon" required>
-                    
+                   
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Alamat</label>
                     <input type="text" id="inputAddress" name="addAddress" class="form-control" placeholder="Alamat" required>
-                    
+                   
+                  </div>
+                  
 
-                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">registrasi</button>
-
-                </form><!-- /form -->
+                  <button type="submit" class="btn btn-primary">Tambah</button>
+              </form>
 
                 <?php echo form_close(); ?>
 		    </div>
+      </div>
+
 			<!-- --------------------------------------------------------- -->
-	     
+	    
+
+        <div class="row wrap-section">
+          <div class="col-md-11 form-add-kategori">
+              <table class="table table-bordered">
+
+
+                  <thead>
+                      <tr>
+                          <th>No</th>
+                          <th>username</th>
+                          <th>Nama Lengkap</th>
+                          <th>Email</th>
+                          <th width="200px">Aksi</th>
+                      </tr>
+                  </thead>
+
+
+                  <tbody>
+                    <?php 
+
+                    $i = 1;
+
+                    foreach($data_admin as $ad) { ?>
+                        <tr>
+                          <th class="col1"><?= $i; ?></th>
+                          <th><?= $ad->username; ?></th>
+                          <th><?= $ad->nama;?></th>
+                          <th><?= $ad->email;?></th>
+                          <th class="colbtn" width="200px">
+
+                          <!--     <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $ad->id_admin;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
+                              <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#<?= $ad->id_admin;?>-m-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button> -->
+
+                              Fungsi Super Admin
+
+                          </th>
+                        </tr>
+
+                    <?php $i++; }?>
+                  </tbody>
+              </table>
+
+          </div>
+        </div>
+
+
 	    </div>
 
 
