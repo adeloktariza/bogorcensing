@@ -131,12 +131,13 @@
                                     <h4><?= $row->judul_laporan;?></h4>
                                     <span><?= $row->tgl_lapor;?></span>
                                     <p><?= $row->keterangan;?></p>
+                                    <span class="edge">Status laporan :</span>
                                     <?php if($row->status_laporan == "terkirim"){?>
-                                        <button class="btn btn-secondary"><?= $row->status_laporan;?></button>
+                                        <span class="terkirim-c"><?= $row->status_laporan;?></span>
                                     <?php } else if($row->status_laporan == "validasi"){?>
-                                        <button class="btn btn-info"><?= $row->status_laporan;?></button>
+                                        <span class="validasi-c"><?= $row->status_laporan;?></span>
                                     <?php } else if($row->status_laporan == "verifikasi"){?>
-                                        <button class="btn btn-success"><?= $row->status_laporan;?></button>
+                                        <span class="verifikasi-c"><?= $row->status_laporan;?></span>
                                     <?php }?>
                                 </div>
                             </div>
@@ -183,6 +184,7 @@
             
             if($row->status_laporan == "terkirim"){
                 echo "
+                <button type='button' class='btn btn-' data-dismiss='modal' data-toggle='modal' data-target='#<?= $row->id_laporan;?>-modal-update'>Edit</button>
                 <a href='userController/delete_laporan/$row->id_laporan'>
                     <button type='button' class='btn btn-danger'>Hapus</button>
                 </a>
@@ -199,12 +201,57 @@
     </div>
     ";
 
-        }
+    }
 
-    }else{ 
+    }?>
+
+    <section id="modal-up" class="about-us-section-1">
+    <?php
+        if($data_laporan){
+            foreach($data_laporan as $row) {
+    echo "
     
+    <div class='modal fade bd-example-modal-lg' tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true' id='$row->id_laporan-modal-update'>
+      <div class='modal-dialog modal-lg'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLongTitle'> $row->judul_laporan</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>X</span>
+            </button>
 
-    } ?>
+          </div>
+          <div class='modal-body'>
+            <div class='modal-img'>
+                <img src='$row->media.jpg' class='img-responsive' alt='..''>
+            </div>
+            
+            <span>Tanggal Lapor : $row->tgl_lapor</span>
+            <p>$row->keterangan</p>
+          </div>
+          <div class='modal-footer'>";
+            
+            if($row->status_laporan == "terkirim"){
+                echo "
+                <a href='userController/delete_laporan/$row->id_laporan'>
+                    <button type='button' class='btn btn-danger'>Hapus</button>
+                </a>
+                    ";
+            }
+
+            echo"
+
+            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Keluar</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    ";
+
+    }
+
+    }?>
 
     
     <!-- End Portfolio Modal Section -->
