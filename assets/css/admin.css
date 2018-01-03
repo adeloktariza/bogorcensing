@@ -115,12 +115,7 @@ body.sticky-footer .content-wrapper{
     text-align: center;
 }
 .btn {
-    box-sizing: border-box;
-    padding: 10px 22px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #414141;
-    background: #007bff;
+
     cursor: pointer;
 }
 .btn-direct {
@@ -136,4 +131,19 @@ body.sticky-footer .content-wrapper{
     background-image: -moz-linear-gradient(top,#fd8100,#f46f02);
     background-image: -o-linear-gradient(top,#fd8100,#f46f02);
     background-image: linear-gradient(to bottom,#fd8100,#f46f02);
+}
+.wrap-section {
+    margin:20px;
+}
+.form-add-kategori{
+    border:1px solid #ccc;
+    padding:20px;
+    margin:20px 10px;
+}
+.wrap-section thead tr{
+    text-align: center;
+}
+.wrap-section tbody tr th.col1,
+.wrap-section tbody tr th.colbtn{
+    text-align: center;
 }

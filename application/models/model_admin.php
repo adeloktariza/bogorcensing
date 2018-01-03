@@ -13,6 +13,24 @@
     {
         $this->db->insert('kategori', $data);
     }
+
+    public function get_kategori(){
+        
+
+        $this->db->select('*')
+                 ->from('instansi')
+                 ->join('kategori', 'kategori.id_instansi = instansi.id_instansi');
+                   
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+                    return $query->result();
+        }
+        
+        return false;
+        
+    }
 }
 
 

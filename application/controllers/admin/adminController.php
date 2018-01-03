@@ -34,6 +34,8 @@ class AdminController extends CI_Controller {
 
     	$data['data_instansi'] = $this->model_admin->get_instansi();
 
+    	$data['data_kategori'] = $this->model_admin->get_kategori();
+
 
         $this->load->view('view_admin_kategori',$data);
     }

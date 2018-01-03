@@ -87,27 +87,72 @@
 	        <li class="breadcrumb-item active">Registrasi</li>
 	      </ol>
 
-        <div class="row">
-
+        <div class="row wrap-section">
+          <div class="col-md-6 form-add-kategori">
               <?php echo form_open("admin/adminController/add_kategori"); ?>
 
-              <form class="form-signin">
-                  
-                    <input type="text" id="inputName" name="addName" class="form-control" placeholder="Nama Kategori" required>
-                     <select class="form-control" name="addKategori">
-                          <option  value="">---Pilih Instansi---</option>                    
+              <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nama Kategori</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Nama Kategori" name="addName">
+                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect1">Kategori</label>
+                    <select class="form-control" name="addKategori">
+                          <option  value=">---Pilih Instansi---"</option>                    
                           <?php foreach($data_instansi->result() as $row) { ?>
                               <option value="<?php echo $row->id_instansi;?>"><?php echo $row->nama;?></option>
                           <?php } ?>
-                    </select>    
-                   
-                    
+                    </select>
+                     <small id="fileHelp" class="form-text text-muted">Pilih kategori sesuai pelanggaran</small>
+                  </div>
 
-                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">registrasi</button>
+                  <button type="submit" class="btn btn-primary">Tambah</button>
+              </form>
 
-                </form><!-- /form -->
+              <?php echo form_close(); ?>
 
-                <?php echo form_close(); ?>
+          </div>
+        </div>
+
+        <div class="row wrap-section">
+          <div class="col-md-11 form-add-kategori">
+              <table class="table table-bordered">
+
+
+                  <thead>
+                      <tr>
+                          <th>No</th>
+                          <th>Nama Kategori</th>
+                          <th>Instansi</th>
+                          <th width="200px">Aksi</th>
+                      </tr>
+                  </thead>
+
+
+                  <tbody>
+                    <?php 
+
+                    $i = 1;
+
+                    foreach($data_kategori as $kat) { ?>
+                        <tr>
+                          <th class="col1"><?= $i; ?></th>
+                          <th><?= $kat->nama_kategori; ?></th>
+                          <th><?= $kat->nama;?></th>
+                          <th class="colbtn" width="200px">
+                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
+                              <button type='button' class='btn btn-success' data-toggle="modal" data-target="#-m-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                          </th>
+                        </tr>
+
+                    <?php $i++; }?>
+                  </tbody>
+              </table>
+
+          </div>
         </div>
 			<!-- --------------------------------------------------------- -->
 	     
