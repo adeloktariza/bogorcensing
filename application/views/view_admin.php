@@ -33,28 +33,19 @@
             <span class="nav-link-text">&nbsp;Kategori</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="admin panel">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collaps-1" data-parent="#exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kategori">
+          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_admin'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Admin Panel</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collaps-1">
-            <li>
-              <a href="<?php echo base_url('admin/adminController/page_register_admin'); ?>">Tambah admin</a>
-            </li>
-          </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="admin panel">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collaps-2" data-parent="#exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kategori">
+          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_instansi'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Instansi Panel</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collaps-2">
-            <li>
-              <a href="<?php echo base_url('admin/adminController/page_register_instansi'); ?>">Tambah instansi</a>
-            </li>
-          </ul>
         </li>
+       
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

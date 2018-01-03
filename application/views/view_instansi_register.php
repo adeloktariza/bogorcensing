@@ -33,27 +33,17 @@
             <span class="nav-link-text">&nbsp;Kategori</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="admin panel">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kategori">
+          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_admin'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Admin Panel</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="<?php echo base_url('admin/adminController/page_register_admin'); ?>">Tambah admin</a>
-            </li>
-          </ul>
         </li>
-        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="admin panel">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collaps-2" data-parent="#exampleAccordion">
+        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Kategori">
+          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_instansi'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Instansi Panel</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collaps-2">
-            <li>
-              <a href="<?php echo base_url('admin/adminController/page_register_instansi'); ?>">Tambah instansi</a>
-            </li>
-          </ul>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
@@ -82,9 +72,9 @@
 	      <!-- Breadcrumbs-->
 	      <ol class="breadcrumb">
 	        <li class="breadcrumb-item">
-	          <a href="#">Instansi</a>
+	          <a href="#">Admin Panel</a>
 	        </li>
-	        <li class="breadcrumb-item active">Registrasi</li>
+	        <li class="breadcrumb-item active">Instansi</li>
 	      </ol>
 
 <!--         <div class="row">
@@ -191,9 +181,6 @@
 
                               <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $di->id_instansi;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
-                              <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#<?= $di->id_instansi;?>-m-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-
-
                           </th>
                         </tr>
 
@@ -211,84 +198,37 @@
       <i class="fa fa-angle-up"></i>
     </a>
 
-    <?php foreach($data_dinas as $di) { ?>
-
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_kategori;?>-m-hapus">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class='modal-header'>
-            <h5 class='modal-title' id='exampleModalLongTitle'>Hapus Data</h5>
-            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                    <span aria-hidden='true'>X</span>
-            </button>
-
-          </div>
-          <div class='modal-body'>
-              <p>Apakah anda yakin untuk menghapus Instansi <?= $di->nama;?></p>
-          </div>
-          <div class='modal-footer'>
-            
-            <a href='<?php echo base_url('admin/adminController/update_kategori')?>/<?= $kat->id_kategori;?>'>
-                <button type='button' class='btn btn-primary'>Ya</button>
-            </a>
-
-            <button type='button' class='btn btn-primary' data-dismiss='modal'>Tidak</button>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <?php }?>
-
-    <?php foreach($data_dinas as $di) { ?>
-
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_kategori;?>-m-edit">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class='modal-header'>
-            <h5 class='modal-title' id='exampleModalLongTitle'>Edit Data</h5>
-            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                    <span aria-hidden='true'>X</span>
-            </button>
-
-          </div>
-          <div class='modal-body'>
-            <?php echo form_open("admin/adminController/update_kategori/$kat->id_kategori"); ?>
-
-              <form>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Nama Kategori</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Nama Kategori" name="addName" value="<?= $kat->nama_kategori?>">
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleSelect1">Kategori</label>
-                    <select class="form-control" name="addKategori">
-                          <option  value="<?= $kat->id_instansi;?>"><?= $kat->nama;?></option>                    
-                          <?php foreach($data_instansi->result() as $row) { ?>
-                              <option value="<?php echo $row->id_instansi;?>"><?php echo $row->nama;?></option>
-                          <?php } ?>
-                    </select>
-                     <small id="fileHelp" class="form-text text-muted">Pilih kategori sesuai pelanggaran</small>
-                  </div>
-
-                  <button type="submit" class="btn btn-primary">Simpan</button>
-                  <button type='button' class='btn btn-primary' data-dismiss='modal'>Keluar</button>
-              </form>
-
-            <?php echo form_close(); ?>
-
-          </div>
-          <div class='modal-footer'>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <?php }?>
     <!-- Logout Modal-->
+
+        <?php foreach($data_dinas as $di) { ?>
+
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $di->id_instansi;?>-m-hapus">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLongTitle'>Hapus Data</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                            <span aria-hidden='true'>X</span>
+                    </button>
+
+                  </div>
+                  <div class='modal-body'>
+                      <p>Apakah anda yakin untuk menghapus Instansi <?= $di->nama;?></p>
+                  </div>
+                  <div class='modal-footer'>
+                    
+                    <a href='<?php echo base_url('admin/adminController/update_kategori')?>/<?= $kat->id_kategori;?>'>
+                        <button type='button' class='btn btn-primary'>Ya</button>
+                    </a>
+
+                    <button type='button' class='btn btn-primary' data-dismiss='modal'>Tidak</button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        <?php }?>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -308,5 +248,9 @@
     </div>
   </div>
 </body>
+
+
+
+
 
 <?php include 'includes/footer.php'; ?>
