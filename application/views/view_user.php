@@ -139,6 +139,7 @@
                                     <div class="footer-laporan">
 
                                     <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $row->id_laporan;?>-modal-hapus">Hapus</button>
+                                    
                                     <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $row->id_laporan;?>-modal-update">Edit</button>
                                    
                                     </div>

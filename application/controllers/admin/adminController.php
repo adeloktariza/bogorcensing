@@ -99,5 +99,29 @@ class AdminController extends CI_Controller {
 
 	}
 
+	public function update_kategori() {
+
+		$id= $this->uri->segment(4);
+		
+		$data = array('nama_kategori' => $this->input->post('addName', TRUE),
+					  'id_instansi'   => $this->input->post('addKategori', TRUE)
+					 );
+
+		$hasil = $this->model_admin->update_kategori($data,$id);
+
+		redirect('admin/AdminController/page_kategori');
+
+	}
+
+	public function delete_kategori() {
+
+		$data= $this->uri->segment(4);
+		
+		$del = $this->model_admin->delete_kategori($data);
+
+		redirect('admin/adminController/page_kategori');
+
+	}
+
 }
 ?>

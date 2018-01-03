@@ -142,9 +142,11 @@
                           <th><?= $kat->nama_kategori; ?></th>
                           <th><?= $kat->nama;?></th>
                           <th class="colbtn" width="200px">
-                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
-                              <button type='button' class='btn btn-success' data-toggle="modal" data-target="#-m-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $kat->id_kategori;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
+                              <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#<?= $kat->id_kategori;?>-m-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+
                           </th>
                         </tr>
 
@@ -182,7 +184,91 @@
         </div>
       </div>
     </div>
+
+
+
+    <?php foreach($data_kategori as $kat) { ?>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_kategori;?>-m-hapus">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLongTitle'>Hapus Data</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>X</span>
+            </button>
+
+          </div>
+          <div class='modal-body'>
+            
+            
+          </div>
+          <div class='modal-footer'>
+            
+            <a href='<?php echo base_url('admin/adminController/update_kategori')?>/<?= $kat->id_kategori;?>'>
+                <button type='button' class='btn btn-secondary'>Simpan</button>
+            </a>
+
+            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Keluar</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <?php }?>
+
+    <?php foreach($data_kategori as $kat) { ?>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_kategori;?>-m-edit">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLongTitle'>Hapus Data</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>X</span>
+            </button>
+
+          </div>
+          <div class='modal-body'>
+            <?php echo form_open("admin/adminController/update_kategori/$kat->id_kategori"); ?>
+
+              <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nama Kategori</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Nama Kategori" name="addName" value="<?= $kat->nama_kategori?>">
+                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect1">Kategori</label>
+                    <select class="form-control" name="addKategori">
+                          <option  value="<?= $kat->id_instansi;?>"><?= $kat->nama;?></option>                    
+                          <?php foreach($data_instansi->result() as $row) { ?>
+                              <option value="<?php echo $row->id_instansi;?>"><?php echo $row->nama;?></option>
+                          <?php } ?>
+                    </select>
+                     <small id="fileHelp" class="form-text text-muted">Pilih kategori sesuai pelanggaran</small>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <button type='button' class='btn btn-primary' data-dismiss='modal'>Keluar</button>
+              </form>
+
+            <?php echo form_close(); ?>
+
+          </div>
+          <div class='modal-footer'>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <?php }?>
+
   </div>
+
+
 </body>
 
 <?php include 'includes/footer.php'; ?>

@@ -31,6 +31,20 @@
         return false;
         
     }
+
+    public function update_kategori($data, $id){
+
+            $this->db->where("id_kategori",$id);
+            $this->db->update("kategori",$data);
+    }
+
+    public function delete_kategori($data){
+        
+        $this->db->where('id_kategori', $data);
+        
+        $this->db->delete('kategori');
+        
+    }
 }
 
 
