@@ -123,7 +123,7 @@ class AdminController extends CI_Controller {
 
 		$hasil2 = $this->model_register->add_instansi($data2);
 
-		redirect('admin/AdminController/page_register');
+		redirect('admin/AdminController/page_register_instansi');
 
 	}
 

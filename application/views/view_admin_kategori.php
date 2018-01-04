@@ -124,6 +124,8 @@
                   <tbody>
                     <?php 
 
+                    if($data_kategori != null){
+
                     $i = 1;
 
                     foreach($data_kategori as $kat) { ?>
@@ -140,7 +142,7 @@
                           </th>
                         </tr>
 
-                    <?php $i++; }?>
+                    <?php $i++; }; }?>
                   </tbody>
               </table>
 
@@ -177,7 +179,11 @@
 
 
 
-    <?php foreach($data_kategori as $kat) { ?>
+    <?php 
+
+     if($data_kategori != null){
+
+    foreach($data_kategori as $kat) { ?>
 
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_kategori;?>-m-hapus">
       <div class="modal-dialog modal-lg">
@@ -205,9 +211,13 @@
       </div>
     </div>
 
-    <?php }?>
+    <?php }}?>
 
-    <?php foreach($data_kategori as $kat) { ?>
+    <?php 
+
+     if($data_kategori != null){
+
+    foreach($data_kategori as $kat) { ?>
 
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_kategori;?>-m-edit">
       <div class="modal-dialog modal-lg">
@@ -253,7 +263,7 @@
       </div>
     </div>
 
-    <?php }?>
+    <?php }}?>
 
   </div>
 
