@@ -116,7 +116,7 @@
 				              </div>  
 				                              
 				              <div class="bignotepad-footer btn-position" >
-				                 <a href="/layanan/eazy-payment" class="btn btn-direct" target="_blank">
+				                 <a href="<?php echo base_url('admin/adminController/page_berita'); ?>" class="btn btn-direct" target="_blank">
 				                    <span>Panel Berita</span>
 				                 </a>
 				              </div>     

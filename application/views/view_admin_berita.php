@@ -15,13 +15,13 @@
             <span class="nav-link-text">&nbsp;Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Laporan">
+        <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Laporan">
           <a class="nav-link" href="<?php echo base_url('admin/adminController/page_laporan'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Laporan</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Berita">
+        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Berita">
           <a class="nav-link" href="<?php echo base_url('admin/adminController/page_berita'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Berita</span>
@@ -74,40 +74,27 @@
 	        <li class="breadcrumb-item">
 	          <a href="#">Admin Panel</a>
 	        </li>
-	        <li class="breadcrumb-item active">Instansi</li>
+	        <li class="breadcrumb-item active">Berita</li>
 	      </ol>
 
        <div class="row wrap-section">
           <div class="col-md-11 form-add-kategori">
-              <?php echo form_open_multipart("user/userController/add_berita"); ?>
+              <?php echo form_open_multipart("admin/adminController/add_berita"); ?>
                   <form>
                         <div class="form-group">
                           <label for="exampleSelect1">Pilih Berita</label>
-                          <select class="form-control" id="exampleSelect1" name="addKategori">
-                              <?php foreach($data_laporan_valid->result() as $ber) { ?>
-                                  <option value="<?php echo $ber->id_laporan;?>"><?php echo $ber->judul_laporan;?></option>
+                          <select class="form-control" id="exampleSelect1" name="addlaporan">
+                              <?php foreach($data_laporan_valid as $ber) { ?>
+                                  <option value="<?= $ber->id_laporan;?>"><?= $ber->judul_laporan;?></option>
                               <?php } ?>
                           </select>
-                           <small id="fileHelp" class="form-text text-muted">Pilih Laporan</small>
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Judul Laporan</label>
-                          <input type="text" class="form-control" id="exampleInputJudul" placeholder="Masukkan Judul Laporan" name="judul">
-                          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                         </div>
 
                         <div class="form-group">
-                          <label for="exampleTextarea">Lokasi Kejadian</label>
-                          <textarea class="form-control" id="exampleTextarea" rows="1" name="lokasi"></textarea>
+                          <label for="exampleTextarea">Isi Berita</label>
+                          <textarea class="form-control" id="exampleTextarea" rows="4" name="keterangan"></textarea>
                         </div>
 
-                        <div class="form-group">
-                          <label for="exampleTextarea">Keterangan</label>
-                          <textarea class="form-control" id="exampleTextarea" rows="4" name="keterangan" placeholder="Masukkan keterangan"></textarea>
-                        </div>
-
-                        
-                        
                         <button type="submit" class="btn btn-primary">Kirim</button>
                   </form>
               <?php echo form_close(); ?>
@@ -115,117 +102,63 @@
           </div>
        </div>
 
+       <div class="row wrap-section">
+          <div class="col-md-11 form-add-kategori">
+              <table class="table table-bordered">
+
+
+                  <thead>
+                      <tr>
+                          <th>No</th>
+                          <th>Judul Berita</th>
+                          <th>Lokasi</th>
+                          <th>Admin</th>
+                          <th width="200px">Aksi</th>
+                      </tr>
+                  </thead>
+
+
+                  <tbody>
+                    <?php 
+
+                    if ($data_berita != null){
+
+                      $i=1;
+
+                    foreach($data_berita as $la) { ?>
+                        <tr>
+                          <th class="center"><?= $i;?></th>
+                          <th><p data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-tampil">
+                                  <?= $la->judul_laporan; ?>
+                              </p>
+                          </th>
+                          <th><?= $la->lokasi_kejadian;?></th>
+                          <th class="center"><?= $la->nama;?></th>
+                          <th class="colbtn" width="200px">
+
+                            <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $la->id_berita;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
+                            <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#<?= $la->id_berita;?>-m-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+
+
+                          </th>
+                        </tr>
+
+                    <?php } $i++;
+                  }?>
+
+                  </tbody>
+              </table>
+
+          </div>
+       </div>
+
 
    	</div>
   
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-
     <!-- Logout Modal-->
 
-        <?php 
-        if ($data_laporan != null){
-          foreach($data_laporan as $la) { ?>
-
-          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-hapus">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLongTitle'>Hapus Data</h5>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                            <span aria-hidden='true'>X</span>
-                    </button>
-
-                  </div>
-                  <div class="modal-body">
-                      <p>Apakah anda yakin untuk menghapus Laporan "<?= $la->judul_laporan;?>" ?</p>
-                  </div>
-                  <div class='modal-footer'>
-                    
-                    <a href="<?php echo base_url('admin/adminController/delete_laporan')?>/<?= $la->id_laporan;?>">
-                        <button type='button' class='btn btn-primary'>Ya</button>
-                    </a>
-
-                    <button type='button' class='btn btn-primary' data-dismiss='modal'>Tidak</button>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-
-        <?php }}?>
-
-        <?php 
-        if ($data_laporan != null){
-          foreach($data_laporan as $la) { ?>
-
-          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-status">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLongTitle'>Ubah status Laporan</h5>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                            <span aria-hidden='true'>X</span>
-                    </button>
-
-                  </div>
-                  <div class='modal-body'>
-                      <p>Apakah anda yakin untuk mengubah status Laporan <?= $la->status_laporan;?> menjadi verifikasi (data dianggap benar).</p>
-                  </div>
-                  <div class='modal-footer'>
-                    
-                    <a href="<?php echo base_url('admin/adminController/update_status')?>/<?= $la->id_laporan;?>">
-                        <button type='button' class='btn btn-primary'>Ya</button>
-                    </a>
-
-                    <button type='button' class='btn btn-primary' data-dismiss='modal'>Tidak</button>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-tampil">
-              <div class="modal-dialog modal-lg">
-                 <div class='modal-content'>
-                  <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLongTitle'><?= $la->judul_laporan?></h5>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                            <span aria-hidden='true'>X</span>
-                    </button>
-
-                  </div>
-                  <div class='modal-body'>
-                    <div class='modal-img'>
-                        <img src="<?= $la->media;?>.jpg" class="img-responsive">
-                    </div>
-                    
-                    <span></span>
-                    <span>Tanggal Lapor   : <?= $la->tgl_lapor;?></span><br>
-                    <span>Lokasi Kejadian : <?= $la->lokasi_kejadian;?></span><br>
-                    <span>Satus Laporan : <?= $la->status_laporan;?></span><br>
-                    <p><?= $la->keterangan;?></p>
-                  </div>
-                  <div class='modal-footer'>
-                    <?php if($la->status_laporan == "terkirim") {?>
-                              
-                            <a href="<?php echo base_url('admin/adminController/update_status')?>/<?= $la->id_laporan;?>">
-                              <button type='button' class='btn btn-success'>Verivikasi</button>
-                            </a>
-
-                    <?php } ?>
-                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Keluar</button>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-
-        <?php }
-
-      }?>
+      
         
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -244,6 +177,85 @@
         </div>
       </div>
     </div>
+
+    <?php 
+
+    if ($data_berita != null){
+
+    foreach($data_berita as $kat) { ?>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_berita;?>-m-hapus">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLongTitle'>Hapus Data</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>X</span>
+            </button>
+
+          </div>
+          <div class='modal-body'>
+              <p>Apakah anda yakin untuk menghapus Berita <?= $kat->judul_laporan;?></p>
+          </div>
+          <div class='modal-footer'>
+            
+            <a href="<?php echo base_url('admin/adminController/delete_berita')?>/<?= $kat->id_berita;?>">
+                <button type='button' class='btn btn-primary'>Ya</button>
+            </a>
+
+            <button type='button' class='btn btn-primary' data-dismiss='modal'>Tidak</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_berita;?>-m-edit">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLongTitle'>Edit Data</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>X</span>
+            </button>
+
+          </div>
+          <div class='modal-body'>
+
+          <?php echo form_open("admin/adminController/update_berita/$kat->id_berita"); ?>
+                  <form>
+                        <div class="form-group">
+                          <label for="exampleSelect1">Pilih Berita</label>
+                          <select class="form-control" id="exampleSelect1" name="addlaporan">
+
+                              <option value="<?= $ber->id_laporan;?>"><?= $ber->judul_laporan;?></option>
+
+                              <?php foreach($data_laporan_valid as $ber) { ?>
+                                  <option value="<?= $ber->id_laporan;?>"><?= $ber->judul_laporan;?></option>
+                              <?php } ?>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleTextarea">Isi Berita</label>
+                          <textarea class="form-control" id="exampleTextarea" rows="4" name="keterangan"><?= $kat->isi_berita;?></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Kirim</button>
+                        <button type='button' class='btn btn-primary' data-dismiss='modal'>Tidak</button>
+                  </form>
+              <?php echo form_close(); ?>
+
+          </div>
+          <div class='modal-footer'>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <?php }}?>
+
   </div>
 </body>
 

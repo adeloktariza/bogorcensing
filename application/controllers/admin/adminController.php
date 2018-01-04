@@ -66,7 +66,15 @@ class AdminController extends CI_Controller {
     {
     	$data['username'] = $this->session->userdata('username');
 
-    	// $data['data_laporan'] = $this->model_admin->get_laporan();
+    	$data['id_user'] = $this->session->userdata('id_user');
+
+		$id = $this->session->userdata('id_user');
+
+		$id_admin = $this->model_admin->get_id_admin($id);
+
+		$data['data_berita'] = $this->model_admin->get_berita();
+
+    	$data['data_laporan_valid'] = $this->model_admin->get_laporan_valid();
 
         $this->load->view('view_admin_berita',$data);
     }
@@ -130,6 +138,25 @@ class AdminController extends CI_Controller {
 
 	}
 
+	public function add_berita() {
+
+		$data['id_user'] = $this->session->userdata('id_user');
+
+		$id = $this->session->userdata('id_user');
+
+		$id_admin = $this->model_admin->get_id_admin($id);
+
+		$data = array('id_admin' => $id_admin,
+					  'id_laporan' => $this->input->post('addlaporan', TRUE),
+					  'isi_berita'   => $this->input->post('keterangan', TRUE)
+					 );
+
+		$hasil = $this->model_admin->add_berita($data);
+
+		redirect('admin/AdminController/page_berita');
+
+	}
+
 	public function update_kategori() {
 
 		$id= $this->uri->segment(4);
@@ -144,6 +171,29 @@ class AdminController extends CI_Controller {
 
 	}
 
+	public function update_berita() {
+
+		$idber= $this->uri->segment(4);
+
+		echo $idber;
+		$id = $this->session->userdata('id_user');
+
+		$id_admin = $this->model_admin->get_id_admin($id);
+
+		$data = array('id_admin' => $id_admin,
+					  'id_laporan' => $this->input->post('addlaporan', TRUE),
+					  'isi_berita'   => $this->input->post('keterangan', TRUE)
+					 );
+
+
+
+		$hasil = $this->model_admin->update_berita($data,$idber);
+
+		redirect('admin/AdminController/page_berita');
+
+	}
+
+
 	public function delete_kategori() {
 
 		$data= $this->uri->segment(4);
@@ -151,6 +201,16 @@ class AdminController extends CI_Controller {
 		$del = $this->model_admin->delete_kategori($data);
 
 		redirect('admin/adminController/page_kategori');
+
+	}
+
+	public function delete_berita() {
+
+		$data= $this->uri->segment(4);
+		
+		$del = $this->model_admin->delete_berita($data);
+
+		redirect('admin/adminController/page_berita');
 
 	}
 

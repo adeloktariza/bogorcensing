@@ -74,7 +74,7 @@
 	        <li class="breadcrumb-item">
 	          <a href="#">Admin Panel</a>
 	        </li>
-	        <li class="breadcrumb-item active">Instansi</li>
+	        <li class="breadcrumb-item active">Laporan</li>
 	      </ol>
 
        <div class="row wrap-section">
