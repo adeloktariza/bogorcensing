@@ -53,6 +53,15 @@ class AdminController extends CI_Controller {
         $this->load->view('view_admin_kategori',$data);
     }
 
+    public function page_laporan() 
+    {
+    	$data['username'] = $this->session->userdata('username');
+
+    	$data['data_laporan'] = $this->model_admin->get_laporan();
+
+        $this->load->view('view_admin_laporan',$data);
+    }
+
 	public function register_admin() {
 		$data = array('username' => $this->input->post('addUsername', TRUE),
 					  'password' => md5($this->input->post('addPassword', TRUE)),
@@ -133,6 +142,28 @@ class AdminController extends CI_Controller {
 		$del = $this->model_admin->delete_kategori($data);
 
 		redirect('admin/adminController/page_kategori');
+
+	}
+
+	public function delete_laporan() {
+
+		$data= $this->uri->segment(4);
+		
+		$del = $this->model_admin->delete_laporan($data);
+
+		redirect('admin/adminController/page_laporan');
+
+	}
+
+	public function update_status() {
+
+		$id= $this->uri->segment(4);
+		
+		$data = array('status_laporan' => "verifikasi",);
+
+		$hasil = $this->model_admin->update_status($data,$id);
+
+		redirect('admin/AdminController/page_laporan');
 
 	}
 

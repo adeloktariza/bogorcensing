@@ -178,7 +178,7 @@
       <div class='modal-dialog modal-lg'>
         <div class='modal-content'>
           <div class='modal-header'>
-            <h5 class='modal-title' id='exampleModalLongTitle'></h5>
+            <h5 class='modal-title' id='exampleModalLongTitle'>$row->judul_laporan</h5>
             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                     <span aria-hidden='true'>X</span>
             </button>
@@ -189,7 +189,10 @@
                 <img src='$row->media.jpg' class='img-responsive' alt='..''>
             </div>
             
-            <span>Tanggal Lapor : $row->tgl_lapor</span>
+            <span></span>
+            <span>Tanggal Lapor   : $row->tgl_lapor</span><br>
+            <span>Lokasi Kejadian : $row->lokasi_kejadian</span><br>
+            <span>Satus Laporan : $row->status_laporan</span><br>
             <p>$row->keterangan</p>
           </div>
           <div class='modal-footer'>
@@ -200,18 +203,7 @@
         </div>
       </div>
     </div>
-    ";
 
-    }
-
-    }?>
-    </section>
-
-    <section class="about-us-section-1">
-    <?php
-        if($data_laporan){
-            foreach($data_laporan as $row) {
-    echo "
     
     <div class='modal fade bd-example-modal-lg' tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true' id='$row->id_laporan-modal-hapus'>
       <div class='modal-dialog modal-lg'>
@@ -239,19 +231,7 @@
         </div>
       </div>
     </div>
-    ";
-
-    }
-
-    }?>
-    </section>
-
-
-    <section class="about-us-section-1">
-    <?php
-        if($data_laporan){
-            foreach($data_laporan as $row) {
-    echo "
+    
     
     <div class='modal fade bd-example-modal-lg' tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true' id='$row->id_laporan-modal-update'>
       <div class='modal-dialog modal-lg'>
@@ -314,14 +294,6 @@
     }
 
     }?>
-    </section>
-
-    
-
-    
-    <!-- End Portfolio Modal Section -->
-    
-    </div>
     </section>
 
  

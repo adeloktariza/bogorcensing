@@ -147,3 +147,24 @@ body.sticky-footer .content-wrapper{
 .wrap-section tbody tr th.colbtn{
     text-align: center;
 }
+th.center{
+    text-align: center !important;
+}
+
+.wrap-section th button {
+    float: right;
+}
+
+.wrap-section th p:hover {
+    color: #000;
+    cursor: pointer;
+}
+.modal-img img {
+    width: 43%;
+}
+.modal-img {
+    text-align: center;
+}
+.modal-body span {
+    color: #000;
+}

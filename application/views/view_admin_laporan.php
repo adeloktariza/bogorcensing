@@ -3,7 +3,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Instansi Bogor Censing</a>
+    <a class="navbar-brand" href="index.html">Admin Bogor Censing</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,7 +15,7 @@
             <span class="nav-link-text">&nbsp;Dashboard</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">
+        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Laporan">
           <a class="nav-link" href="<?php echo base_url('admin/adminController/page_laporan'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Laporan</span>
@@ -39,7 +39,7 @@
             <span class="nav-link-text">&nbsp;Admin Panel</span>
           </a>
         </li>
-        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Kategori">
+        <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Kategori">
           <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_instansi'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Instansi Panel</span>
@@ -77,54 +77,6 @@
 	        <li class="breadcrumb-item active">Instansi</li>
 	      </ol>
 
-
-      <div class="row wrap-section">
-          <div class="col-md-6 form-add-kategori">
-
-              <?php echo form_open("admin/adminController/register_instansi"); ?>
-
-                <form>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="text" id="inputUsername" name="addUsername" class="form-control" placeholder="Username" required autofocus>
-                   
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Password</label>
-                    <input type="password" id="inputPassword" name="addPassword" class="form-control" placeholder="Password" required>
-                   
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Nama Lengkap</label>
-                    <input type="text" id="inputName" name="addName" class="form-control" placeholder="Nama" required>
-                   
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" id="inputEmail" name="addEmail" class="form-control" placeholder="Email" required>
-                   
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Nomor Telepon</label>
-                    <input type="text" id="inputNumber" name="addNumber" class="form-control" placeholder="Nomor Telepon" required>
-                   
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Alamat</label>
-                    <input type="text" id="inputAddress" name="addAddress" class="form-control" placeholder="Alamat" required>
-                   
-                  </div>
-                  
-
-                  <button type="submit" class="btn btn-primary">Tambah</button>
-              </form>
-
-              <?php echo form_close(); ?>
-
-        </div>
-	     
-	    </div>
-
        <div class="row wrap-section">
           <div class="col-md-11 form-add-kategori">
               <table class="table table-bordered">
@@ -132,10 +84,11 @@
 
                   <thead>
                       <tr>
-                          <th>No</th>
-                          <th>username</th>
-                          <th>Nama Instansi</th>
-                          <th>Email</th>
+                          <th>Judul Laporan</th>
+                          <th>tanggal Lapor</th>
+                          <th>Nama Pelapor</th>
+                          <th>Kategori</th>
+                          <th>Status</th>
                           <th width="200px">Aksi</th>
                       </tr>
                   </thead>
@@ -144,22 +97,32 @@
                   <tbody>
                     <?php 
 
-                    $i = 1;
-
-                    foreach($data_dinas as $di) { ?>
+                    if ($data_laporan != null){
+                    foreach($data_laporan as $la) { ?>
                         <tr>
-                          <th class="col1"><?= $i; ?></th>
-                          <th><?= $di->username; ?></th>
-                          <th><?= $di->nama;?></th>
-                          <th><?= $di->email;?></th>
+                          <th><p data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-tampil">
+                                  <?= $la->judul_laporan; ?>
+                              </p>
+                          </th>
+                          <th class="center"><?= $la->tgl_lapor;?></th>
+                          <th><?= $la->nama;?></th>
+                          <th><?= $la->nama_kategori;?></th>
+                          <th class="center"><?= $la->status_laporan;?></th>
                           <th class="colbtn" width="200px">
 
-                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $di->id_instansi;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
+                              <?php if($la->status_laporan == "terkirim") {?>
+                              
+                              <button type='button' class='btn btn-success' data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-status"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+
+                              <?php } ?>
 
                           </th>
                         </tr>
 
-                    <?php $i++; }?>
+                    <?php }}?>
+
                   </tbody>
               </table>
 
@@ -175,9 +138,11 @@
 
     <!-- Logout Modal-->
 
-        <?php foreach($data_dinas as $di) { ?>
+        <?php 
+        if ($data_laporan != null){
+          foreach($data_laporan as $la) { ?>
 
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $di->id_instansi;?>-m-hapus">
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-hapus">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class='modal-header'>
@@ -187,12 +152,12 @@
                     </button>
 
                   </div>
-                  <div class='modal-body'>
-                      <p>Apakah anda yakin untuk menghapus Instansi <?= $di->nama;?></p>
+                  <div class="modal-body">
+                      <p>Apakah anda yakin untuk menghapus Laporan "<?= $la->judul_laporan;?>" ?</p>
                   </div>
                   <div class='modal-footer'>
                     
-                    <a href='<?php echo base_url('admin/adminController/update_kategori')?>/<?= $kat->id_kategori;?>'>
+                    <a href="<?php echo base_url('admin/adminController/delete_laporan')?>/<?= $la->id_laporan;?>">
                         <button type='button' class='btn btn-primary'>Ya</button>
                     </a>
 
@@ -203,8 +168,79 @@
               </div>
             </div>
 
-        <?php }?>
+        <?php }}?>
 
+        <?php 
+        if ($data_laporan != null){
+          foreach($data_laporan as $la) { ?>
+
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-status">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLongTitle'>Ubah status Laporan</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                            <span aria-hidden='true'>X</span>
+                    </button>
+
+                  </div>
+                  <div class='modal-body'>
+                      <p>Apakah anda yakin untuk mengubah status Laporan <?= $la->status_laporan;?> menjadi verifikasi (data dianggap benar).</p>
+                  </div>
+                  <div class='modal-footer'>
+                    
+                    <a href="<?php echo base_url('admin/adminController/update_status')?>/<?= $la->id_laporan;?>">
+                        <button type='button' class='btn btn-primary'>Ya</button>
+                    </a>
+
+                    <button type='button' class='btn btn-primary' data-dismiss='modal'>Tidak</button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-tampil">
+              <div class="modal-dialog modal-lg">
+                 <div class='modal-content'>
+                  <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLongTitle'><?= $la->judul_laporan?></h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                            <span aria-hidden='true'>X</span>
+                    </button>
+
+                  </div>
+                  <div class='modal-body'>
+                    <div class='modal-img'>
+                        <img src="<?= $la->media;?>.jpg" class="img-responsive">
+                    </div>
+                    
+                    <span></span>
+                    <span>Tanggal Lapor   : <?= $la->tgl_lapor;?></span><br>
+                    <span>Lokasi Kejadian : <?= $la->lokasi_kejadian;?></span><br>
+                    <span>Satus Laporan : <?= $la->status_laporan;?></span><br>
+                    <p><?= $la->keterangan;?></p>
+                  </div>
+                  <div class='modal-footer'>
+                    <?php if($la->status_laporan == "terkirim") {?>
+                              
+                            <a href="<?php echo base_url('admin/adminController/update_status')?>/<?= $la->id_laporan;?>">
+                              <button type='button' class='btn btn-success'>Verivikasi</button>
+                            </a>
+
+                    <?php } ?>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Keluar</button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        <?php }
+
+      }?>
+        
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

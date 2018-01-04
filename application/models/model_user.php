@@ -34,7 +34,8 @@
 	        $this->db->select('*')
 	        		->from('laporan')
                   	->join('penduduk', 'penduduk.nik = laporan.nik')
-                  	->where('penduduk.nik',$data);
+                  	->where('penduduk.nik',$data)
+                  	->order_by('id_laporan',"desc");
 	        
 	        $que = $this->db->get();
 

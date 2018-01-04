@@ -16,7 +16,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_laporan'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Laporan</span>
           </a>
@@ -95,7 +95,7 @@
 				              </div>  
 				                              
 				              <div class="bignotepad-footer btn-position" >
-				                 <a href="/layanan/eazy-payment" class="btn btn-direct" target="_blank">
+				                 <a href="<?php echo base_url('admin/adminController/page_laporan'); ?>" class="btn btn-direct">
 				                    <span>Panel Laporan</span>
 				                 </a>
 				              </div>     

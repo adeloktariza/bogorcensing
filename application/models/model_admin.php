@@ -38,11 +38,26 @@
             $this->db->update("kategori",$data);
     }
 
+    public function update_status($data, $id){
+
+            $this->db->where("id_laporan",$id);
+            $this->db->update("laporan",$data);
+    }
+
     public function delete_kategori($data){
         
         $this->db->where('id_kategori', $data);
         
         $this->db->delete('kategori');
+        
+    }
+
+    public function delete_laporan($data){
+        
+        $this->db->where('id_laporan', $data);
+        
+        $this->db->delete('laporan');
+
         
     }
 
@@ -67,6 +82,24 @@
         $this->db->select('*')
                  ->from('instansi')
                  ->join('user', 'user.id_user = instansi.id_user');
+                   
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+                    return $query->result();
+        }
+        
+        return false;
+    }
+
+    public function get_laporan()
+    {
+        $this->db->select('*')
+                 ->from('laporan')
+                 ->join('penduduk', 'penduduk.nik = laporan.nik')
+                 ->join('kategori','kategori.id_kategori = laporan.id_kategori')
+                 ->order_by('id_laporan','desc');
                    
 
         $query = $this->db->get();
