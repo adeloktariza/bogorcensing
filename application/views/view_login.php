@@ -16,11 +16,7 @@
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
                 <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-                <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
+
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form><!-- /form -->
 

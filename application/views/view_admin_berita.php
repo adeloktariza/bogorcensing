@@ -79,52 +79,38 @@
 
        <div class="row wrap-section">
           <div class="col-md-11 form-add-kategori">
-              <table class="table table-bordered">
-
-
-                  <thead>
-                      <tr>
-                          <th>Judul Laporan</th>
-                          <th>tanggal Lapor</th>
-                          <th>Nama Pelapor</th>
-                          <th>Kategori</th>
-                          <th>Status</th>
-                          <th width="200px">Aksi</th>
-                      </tr>
-                  </thead>
-
-
-                  <tbody>
-                    <?php 
-
-                    if ($data_laporan != null){
-                    foreach($data_laporan as $la) { ?>
-                        <tr>
-                          <th><p data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-tampil">
-                                  <?= $la->judul_laporan; ?>
-                              </p>
-                          </th>
-                          <th class="center"><?= $la->tgl_lapor;?></th>
-                          <th><?= $la->nama;?></th>
-                          <th><?= $la->nama_kategori;?></th>
-                          <th class="center"><?= $la->status_laporan;?></th>
-                          <th class="colbtn" width="200px">
-
-                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-
-                              <?php if($la->status_laporan == "terkirim") {?>
-                              
-                              <button type='button' class='btn btn-success' data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-status"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-
+              <?php echo form_open_multipart("user/userController/add_berita"); ?>
+                  <form>
+                        <div class="form-group">
+                          <label for="exampleSelect1">Pilih Berita</label>
+                          <select class="form-control" id="exampleSelect1" name="addKategori">
+                              <?php foreach($data_laporan_valid->result() as $ber) { ?>
+                                  <option value="<?php echo $ber->id_laporan;?>"><?php echo $ber->judul_laporan;?></option>
                               <?php } ?>
+                          </select>
+                           <small id="fileHelp" class="form-text text-muted">Pilih Laporan</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Judul Laporan</label>
+                          <input type="text" class="form-control" id="exampleInputJudul" placeholder="Masukkan Judul Laporan" name="judul">
+                          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
 
-                          </th>
-                        </tr>
+                        <div class="form-group">
+                          <label for="exampleTextarea">Lokasi Kejadian</label>
+                          <textarea class="form-control" id="exampleTextarea" rows="1" name="lokasi"></textarea>
+                        </div>
 
-                    <?php }}?>
+                        <div class="form-group">
+                          <label for="exampleTextarea">Keterangan</label>
+                          <textarea class="form-control" id="exampleTextarea" rows="4" name="keterangan" placeholder="Masukkan keterangan"></textarea>
+                        </div>
 
-                  </tbody>
-              </table>
+                        
+                        
+                        <button type="submit" class="btn btn-primary">Kirim</button>
+                  </form>
+              <?php echo form_close(); ?>
 
           </div>
        </div>
@@ -260,9 +246,5 @@
     </div>
   </div>
 </body>
-
-
-
-
 
 <?php include 'includes/footer.php'; ?>

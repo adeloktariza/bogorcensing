@@ -16,7 +16,7 @@ class Login extends CI_Controller {
 				redirect('user/userController');
 			}
 			elseif ($this->session->userdata('level') == 1) {
-				echo "Masuk user";
+				redirect('instansi/instansiController');
 			}
 			elseif ($this->session->userdata('level') == 0) {
 				redirect('admin/adminController');
@@ -49,7 +49,7 @@ class Login extends CI_Controller {
 				redirect('user/userController');
 			}
 			elseif ($this->session->userdata('level') == 1) {
-				redirect('home');
+				redirect('instansi/instansiController');
 			}
 			elseif ($this->session->userdata('level') == 0) {
 				redirect('admin/adminController');

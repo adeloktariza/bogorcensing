@@ -29,7 +29,7 @@
                     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">registrasi</button>
 
                     <span id="reauth-email" class="reauth-email">
-                        <a href="" class="forgot-password">
+                        <a href="<?php echo base_url('login')?>" class="forgot-password">
                             sudah punya akun
                         </a>
                     </span>

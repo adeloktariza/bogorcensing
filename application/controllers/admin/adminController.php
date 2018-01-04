@@ -62,6 +62,15 @@ class AdminController extends CI_Controller {
         $this->load->view('view_admin_laporan',$data);
     }
 
+    public function page_berita() 
+    {
+    	$data['username'] = $this->session->userdata('username');
+
+    	// $data['data_laporan'] = $this->model_admin->get_laporan();
+
+        $this->load->view('view_admin_berita',$data);
+    }
+
 	public function register_admin() {
 		$data = array('username' => $this->input->post('addUsername', TRUE),
 					  'password' => md5($this->input->post('addPassword', TRUE)),
