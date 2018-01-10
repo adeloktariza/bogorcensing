@@ -10,37 +10,37 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Dashboard</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_laporan'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_laporan'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Laporan</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Berita">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_berita'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_berita'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Berita</span>
           </a>
         </li>
         <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Kategori">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_kategori'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_kategori'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Kategori</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kategori">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_admin'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_register_admin'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Admin Panel</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kategori">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_instansi'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_register_instansi'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Instansi Panel</span>
           </a>
@@ -79,7 +79,7 @@
 
         <div class="row wrap-section">
           <div class="col-md-6 form-add-kategori">
-              <?php echo form_open("admin/adminController/add_kategori"); ?>
+              <?php echo form_open("adminController/add_kategori"); ?>
 
               <form>
                   <div class="form-group">
@@ -90,9 +90,9 @@
                   <div class="form-group">
                     <label for="exampleSelect1">Kategori</label>
                     <select class="form-control" name="addKategori">
-                          <option  value=">---Pilih Instansi---"</option>                    
-                          <?php foreach($data_instansi->result() as $row) { ?>
-                              <option value="<?php echo $row->id_instansi;?>"><?php echo $row->nama;?></option>
+                          <option  value=">---Pilih Instansi---"></option>                    
+                          <?php foreach($instansi as $row) { ?>
+                              <option value="<?= $row->id_instansi;?>"><?= $row->nama;?></option>
                           <?php } ?>
                     </select>
                      <small id="fileHelp" class="form-text text-muted">Pilih kategori sesuai pelanggaran</small>
@@ -124,11 +124,11 @@
                   <tbody>
                     <?php 
 
-                    if($data_kategori != null){
+                    if($kategori != null){
 
                     $i = 1;
 
-                    foreach($data_kategori as $kat) { ?>
+                    foreach($kategori as $kat) { ?>
                         <tr>
                           <th class="col1"><?= $i; ?></th>
                           <th><?= $kat->nama_kategori; ?></th>
@@ -181,9 +181,9 @@
 
     <?php 
 
-     if($data_kategori != null){
+     if($kategori != null){
 
-    foreach($data_kategori as $kat) { ?>
+    foreach($kategori as $kat) { ?>
 
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_kategori;?>-m-hapus">
       <div class="modal-dialog modal-lg">
@@ -200,7 +200,7 @@
           </div>
           <div class='modal-footer'>
             
-            <a href='<?php echo base_url('admin/adminController/delete_kategori')?>/<?= $kat->id_kategori;?>'>
+            <a href='<?php echo base_url('adminController/delete_kategori')?>/<?= $kat->id_kategori;?>'>
                 <button type='button' class='btn btn-primary'>Ya</button>
             </a>
 
@@ -215,9 +215,9 @@
 
     <?php 
 
-     if($data_kategori != null){
+     if($kategori != null){
 
-    foreach($data_kategori as $kat) { ?>
+    foreach($kategori as $kat) { ?>
 
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_kategori;?>-m-edit">
       <div class="modal-dialog modal-lg">
@@ -230,7 +230,7 @@
 
           </div>
           <div class='modal-body'>
-            <?php echo form_open("admin/adminController/update_kategori/$kat->id_kategori"); ?>
+            <?php echo form_open("adminController/update_kategori/$kat->id_kategori"); ?>
 
               <form>
                   <div class="form-group">
@@ -242,8 +242,8 @@
                     <label for="exampleSelect1">Kategori</label>
                     <select class="form-control" name="addKategori">
                           <option  value="<?= $kat->id_instansi;?>"><?= $kat->nama;?></option>                    
-                          <?php foreach($data_instansi->result() as $row) { ?>
-                              <option value="<?php echo $row->id_instansi;?>"><?php echo $row->nama;?></option>
+                          <?php foreach($instansi as $row) { ?>
+                              <option value="<?= $row->id_instansi;?>"><?= $row->nama;?></option>
                           <?php } ?>
                     </select>
                      <small id="fileHelp" class="form-text text-muted">Pilih kategori sesuai pelanggaran</small>

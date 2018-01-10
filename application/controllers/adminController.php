@@ -61,17 +61,22 @@ class AdminController extends CI_Controller {
 		$this->load->view('view_instansi_register', $data);
 	}
 
-	// public function page_kategori() 
- //    {
- //    	$data['username'] = $this->session->userdata('username');
+	public function page_kategori() 
+    {
+    	$data['username'] = $this->session->userdata('username');
 
- //    	$data['data_instansi'] = $this->model_admin->get_instansi();
+    	$instansi = new Instansi;
+    	$instansi = Instansi::all();
 
- //    	$data['data_kategori'] = $this->model_admin->get_kategori();
+    	$kategori = new Kategori;
+    	$kategori = Kategori::all();
+
+    	$data['kategori'] = $kategori;
+    	$data['instansi'] = $instansi;
 
 
- //        $this->load->view('view_admin_kategori',$data);
- //    }
+        $this->load->view('view_admin_kategori',$data);
+    }
 
  //    public function page_laporan() 
  //    {
@@ -125,7 +130,6 @@ class AdminController extends CI_Controller {
 	public function register_instansi() {
 
 		$users = new User;
-
 		$users->username 	= $this->input->post('addUsername', TRUE);
 		$users->password 	= md5($this->input->post('addPassword', TRUE));
 		$users->level 		= 0;
@@ -144,16 +148,16 @@ class AdminController extends CI_Controller {
 
 	}
 
-	// public function add_kategori() {
-	// 	$data = array('nama_kategori' => $this->input->post('addName', TRUE),
-	// 				  'id_instansi'   => $this->input->post('addKategori', TRUE)
-	// 				 );
+	public function add_kategori() {
 
-	// 	$hasil = $this->model_admin->add_kategori($data);
+		$kategori = new Kategori;
+		$kategori->nama_kategori 	= $this->input->post('addName', TRUE);
+		$kategori->id_instansi 		= $this->input->post('addKategori', TRUE);
+		$kategori->save();
 
-	// 	redirect('admin/AdminController/page_kategori');
+		redirect('adminController/page_kategori');
 
-	// }
+	}
 
 	// public function add_berita() {
 
@@ -174,19 +178,20 @@ class AdminController extends CI_Controller {
 
 	// }
 
-	// public function update_kategori() {
+	public function update_kategori() {
 
-	// 	$id= $this->uri->segment(4);
+		$id= $this->uri->segment(3);
+
+		$kategori = new Kategori;
+		$kategori = Kategori::where('id_kategori',$id)->first();
+
+		$kategori->nama_kategori 	= $this->input->post('addName', TRUE);
+		$kategori->id_instansi 		= $this->input->post('addKategori', TRUE);
+		$kategori->save();
 		
-	// 	$data = array('nama_kategori' => $this->input->post('addName', TRUE),
-	// 				  'id_instansi'   => $this->input->post('addKategori', TRUE)
-	// 				 );
+		redirect('adminController/page_kategori');
 
-	// 	$hasil = $this->model_admin->update_kategori($data,$id);
-
-	// 	redirect('admin/AdminController/page_kategori');
-
-	// }
+	}
 
 	// public function update_berita() {
 
@@ -211,15 +216,16 @@ class AdminController extends CI_Controller {
 	// }
 
 
-	// public function delete_kategori() {
+	public function delete_kategori() {
 
-	// 	$data= $this->uri->segment(4);
-		
-	// 	$del = $this->model_admin->delete_kategori($data);
+		$id= $this->uri->segment(3);
 
-	// 	redirect('admin/adminController/page_kategori');
+		$kategori = new Kategori;
+		$kategori = Kategori::delete($id);
 
-	// }
+		redirect('adminController/page_kategori');
+
+	}
 
 	// public function delete_berita() {
 
