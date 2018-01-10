@@ -78,14 +78,43 @@ class AdminController extends CI_Controller {
         $this->load->view('view_admin_kategori',$data);
     }
 
- //    public function page_laporan() 
- //    {
- //    	$data['username'] = $this->session->userdata('username');
+    public function page_laporan() 
+    {
+    	$data['username'] = $this->session->userdata('username');
 
- //    	$data['data_laporan'] = $this->model_admin->get_laporan();
 
- //        $this->load->view('view_admin_laporan',$data);
- //    }
+    	$laporan = new Laporan;
+		$laporan = Laporan::all();
+	 	$kategori = Laporan::kategori()->get();
+	 	$penduduk = Laporan::penduduk()->get();
+
+	 	$data['laporan'] = [];
+	 	$temp = [];
+		foreach ($laporan as $key => $val) {
+			foreach ($penduduk as $key => $val2) {
+					if($val->nik == $val2->nik){
+						$temp['nama'] = $val2->nama;
+					}	
+			}
+			foreach ($kategori as $key => $val3) {
+					if($val->id_kategori == $val3->id_kategori){
+						$temp['nama_kategori'] = $val3->nama_kategori;	
+					}
+			}
+
+			$temp['id_laporan'] = $val->id_laporan;
+			$temp['judul_laporan'] = $val->judul_laporan;
+			$temp['tgl_lapor'] = $val->tgl_lapor;
+			$temp['lokasi_kejadian'] = $val->lokasi_kejadian;
+			$temp['keterangan'] = $val->keterangan;
+			$temp['media'] = $val->media;
+			$temp['status_laporan'] = $val->status_laporan;
+
+			array_push($data['laporan'], $temp);	
+		}
+
+        $this->load->view('view_admin_laporan',$data);
+    }
 
  //    public function page_berita() 
  //    {
@@ -252,17 +281,18 @@ class AdminController extends CI_Controller {
 
 	}
 
-	// public function update_status() {
+	public function update_status() {
 
-	// 	$id= $this->uri->segment(4);
-		
-	// 	$data = array('status_laporan' => "verifikasi",);
+		$id= $this->uri->segment(3);
 
-	// 	$hasil = $this->model_admin->update_status($data,$id);
+		$laporan = new Laporan;
+		$laporan = Laporan::where('id_laporan', $id)->first();
+		$laporan->status_laporan = "verifikasi";
+		$laporan->save();
 
-	// 	redirect('admin/AdminController/page_laporan');
+		redirect('adminController/page_laporan');
 
-	// }
+	}
 
 }
 ?>

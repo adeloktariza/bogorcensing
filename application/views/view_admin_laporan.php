@@ -97,24 +97,24 @@
                   <tbody>
                     <?php 
 
-                    if ($data_laporan != null){
-                    foreach($data_laporan as $la) { ?>
+                    if ($laporan != null){
+                    foreach($laporan as $la) { ?>
                         <tr>
-                          <th><p data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-tampil">
-                                  <?= $la->judul_laporan; ?>
+                          <th><p data-toggle="modal" data-target="#<?= $la['id_laporan'];?>-m-tampil">
+                                  <?= $la['judul_laporan']; ?>
                               </p>
                           </th>
-                          <th class="center"><?= $la->tgl_lapor;?></th>
-                          <th><?= $la->nama;?></th>
-                          <th><?= $la->nama_kategori;?></th>
-                          <th class="center"><?= $la->status_laporan;?></th>
+                          <th class="center"><?= $la['tgl_lapor'];?></th>
+                          <th><?= $la['nama'];?></th>
+                          <th><?= $la['nama_kategori'];?></th>
+                          <th class="center"><?= $la['status_laporan'];?></th>
                           <th class="colbtn" width="200px">
 
-                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $la['id_laporan'];?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
-                              <?php if($la->status_laporan == "terkirim") {?>
+                              <?php if($la['status_laporan'] == "terkirim") {?>
                               
-                              <button type='button' class='btn btn-success' data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-status"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                              <button type='button' class='btn btn-success' data-toggle="modal" data-target="#<?= $la['id_laporan'];?>-m-status"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 
                               <?php } ?>
 
@@ -139,10 +139,10 @@
     <!-- Logout Modal-->
 
         <?php 
-        if ($data_laporan != null){
-          foreach($data_laporan as $la) { ?>
+        if ($laporan != null){
+          foreach($laporan as $la) { ?>
 
-          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-hapus">
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la['id_laporan'];?>-m-hapus">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class='modal-header'>
@@ -153,11 +153,11 @@
 
                   </div>
                   <div class="modal-body">
-                      <p>Apakah anda yakin untuk menghapus Laporan "<?= $la->judul_laporan;?>" ?</p>
+                      <p>Apakah anda yakin untuk menghapus Laporan "<?= $la['judul_laporan'];?>" ?</p>
                   </div>
                   <div class='modal-footer'>
                     
-                    <a href="<?php echo base_url('admin/adminController/delete_laporan')?>/<?= $la->id_laporan;?>">
+                    <a href="<?php echo base_url('adminController/delete_laporan')?>/<?= $la['id_laporan'];?>">
                         <button type='button' class='btn btn-primary'>Ya</button>
                     </a>
 
@@ -171,10 +171,10 @@
         <?php }}?>
 
         <?php 
-        if ($data_laporan != null){
-          foreach($data_laporan as $la) { ?>
+        if ($laporan != null){
+          foreach($laporan as $la) { ?>
 
-          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-status">
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la['id_laporan'];?>-m-status">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class='modal-header'>
@@ -185,11 +185,11 @@
 
                   </div>
                   <div class='modal-body'>
-                      <p>Apakah anda yakin untuk mengubah status Laporan <?= $la->status_laporan;?> menjadi verifikasi (data dianggap benar).</p>
+                      <p>Apakah anda yakin untuk mengubah status Laporan <?= $la['status_laporan'];?> menjadi verifikasi (data dianggap benar).</p>
                   </div>
                   <div class='modal-footer'>
                     
-                    <a href="<?php echo base_url('admin/adminController/update_status')?>/<?= $la->id_laporan;?>">
+                    <a href="<?php echo base_url('adminController/update_status')?>/<?= $la['id_laporan'];?>">
                         <button type='button' class='btn btn-primary'>Ya</button>
                     </a>
 
@@ -201,11 +201,11 @@
             </div>
 
 
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-tampil">
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la['id_laporan'];?>-m-tampil">
               <div class="modal-dialog modal-lg">
                  <div class='modal-content'>
                   <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLongTitle'><?= $la->judul_laporan?></h5>
+                    <h5 class='modal-title' id='exampleModalLongTitle'><?= $la['judul_laporan'];?></h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                             <span aria-hidden='true'>X</span>
                     </button>
@@ -213,19 +213,19 @@
                   </div>
                   <div class='modal-body'>
                     <div class='modal-img'>
-                        <img src="<?= $la->media;?>.jpg" class="img-responsive">
+                        <img src="<?= $la['media'];?>.jpg" class="img-responsive">
                     </div>
                     
                     <span></span>
-                    <span>Tanggal Lapor   : <?= $la->tgl_lapor;?></span><br>
-                    <span>Lokasi Kejadian : <?= $la->lokasi_kejadian;?></span><br>
-                    <span>Satus Laporan : <?= $la->status_laporan;?></span><br>
-                    <p><?= $la->keterangan;?></p>
+                    <span>Tanggal Lapor   : <?= $la['tgl_lapor'];?></span><br>
+                    <span>Lokasi Kejadian : <?= $la['lokasi_kejadian'];?></span><br>
+                    <span>Satus Laporan   : <?= $la['status_laporan'];?></span><br>
+                    <p><?= $la['keterangan'];?></p>
                   </div>
                   <div class='modal-footer'>
-                    <?php if($la->status_laporan == "terkirim") {?>
+                    <?php if($la['status_laporan'] == "terkirim") {?>
                               
-                            <a href="<?php echo base_url('admin/adminController/update_status')?>/<?= $la->id_laporan;?>">
+                            <a href="<?php echo base_url('adminController/update_status')?>/<?= $la['id_laporan'];?>">
                               <button type='button' class='btn btn-success'>Verivikasi</button>
                             </a>
 
