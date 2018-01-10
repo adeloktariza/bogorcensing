@@ -40,6 +40,33 @@ class PendudukController extends CI_Controller {
 		$data['penduduk'] = $penduduk;
 		$data['laporan']  = $laporan;
 		$data['kategori'] = $kategori;
+
+		$berita = new Berita;
+		$berita = Berita::all();
+		$lap    = Berita::laporan()->get();
+
+		$data['berita'] = [];
+	 	$temp = [];
+		foreach ($berita as $key => $val) {
+			foreach ($lap as $key => $val3) {
+					if($val->id_laporan == $val3->id_laporan){
+						$temp['id_laporan'] = $val3->id_laporan;
+						$temp['judul_laporan'] = $val3->judul_laporan;
+						$temp['tgl_lapor'] = $val3->tgl_lapor;
+						$temp['lokasi_kejadian'] = $val3->lokasi_kejadian;
+						$temp['keterangan'] = $val3->keterangan;
+						$temp['media'] = $val3->media;
+						$temp['status_laporan'] = $val3->status_laporan;	
+					}
+			}
+			$temp['id_berita'] = $val->id_berita;
+			$temp['isi_berita'] = $val->isi_berita;
+
+			array_push($data['berita'], $temp);	
+		}
+
+		
+
 		
 		$this->load->view('view_user', $data);
 

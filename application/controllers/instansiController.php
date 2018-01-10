@@ -39,6 +39,7 @@ class InstansiController extends CI_Controller {
 		$laporan = new Laporan;
 		$laporan = Laporan::where('status_laporan !=', 'terkirim')->get();
 
+		
 		$data['laporan'] = [];
 	 	$temp = [];
 		foreach ($laporan as $key => $val) {

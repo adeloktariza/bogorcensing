@@ -18,7 +18,7 @@
                 </div> 
               </div>
             </li>
-            <li><a href="#">Berita</a></li>
+            <li><a href="#berita">Berita</a></li>
             <li><a href="#">Tentang Kami</a></li>
             <li><a href="#">Kontak</a></li>
 
@@ -45,7 +45,7 @@
         </div>
     </section>
     <!-- End Header Section -->
-    
+ 
  <!-- Start Client Section -->
     <section id="laporan" class="client-section">
         <div class="container">
@@ -167,6 +167,40 @@
     </section>
     <!-- End About Us Section -->
  
+      <!-- Start Latest News Section -->
+ <section id="berita" class="team-member-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="section-title text-center" >
+                            <h2 style="color: #fff">Berita terkini</h2>
+                            <p style="color: #fff">Pantau Keadaan disekitar anda</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <?php 
+                    if($berita){
+                    foreach($berita as $row) {
+                ?>
+                <div class="col-md-3 col-sm-6">
+                    <div class="team-member">
+                        <img src="<?= $row['media'];?>.jpg" class="img-responsive" alt="" height=300 >
+                        <div class="team-details">
+                            <h4><?= $row['judul_laporan'];?></h4>
+                            <div class="designation"><?= $row['tgl_lapor'];?></div>
+                            <p class="description"><?= $row['isi_berita'];?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php }}?>
+                
+            </div>
+                
+        </div>
+    </section>
+    <!-- End Latest News Section -->
     <!-- Start Portfolio Modal Section -->
     <section id="modal" class="about-us-section-1">
     <?php
