@@ -1,0 +1,8 @@
+preset: recommended
+
+enabled:
+    - strict
+
+disabled:
+    - empty_return
+    - phpdoc_types # To avoid Resource / resource confusion
