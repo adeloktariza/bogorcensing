@@ -43,31 +43,27 @@
         <div class="container">
             <div class="row">
                 <?php
-                    if($data_laporan){
-                        foreach($data_laporan as $row) {
+                    if($laporan){
+                        foreach($laporan as $row) {
                 ?>
-                            <div class="col-md-12 col-sm-12" id="<?= $row->id_laporan;?>"  >
+                            <div class="col-md-12 col-sm-12" id="<?= $row['id_laporan'];?>"  >
                                 <div class="welcome-section text-center waves-effect">
-                                    <img src="<?= $row->media;?>.jpg" class="img-responsive" alt="..">
-                                    <h4 data-toggle="modal" data-target="#<?= $row->id_laporan;?>-m-tampil"><?= $row->judul_laporan;?></h4>
-                                    <span><?= $row->tgl_lapor;?></span>
-                                    <p><?= $row->keterangan;?></p>
+                                    <img src="<?= $row['media'];?>.jpg" class="img-responsive" alt="..">
+                                    <h4 data-toggle="modal" data-target="#<?= $row['id_laporan'];?>-m-tampil"><?= $row['judul_laporan'];?></h4>
+                                    <span><?= $row['tgl_lapor'];?></span>
+                                    <p><?= $row['keterangan'];?></p>
                                     <span class="edge">Status laporan : </span>
 
-                                    <?php if($row->status_laporan == 'terkirim'){?>
-                                    
-                                        <span class="terkirim-c">Verifikasi</span>
-                                    
-                                    <?php } else if($row->status_laporan == "validasi"){?>
+                                    <?php  if($row['status_laporan'] == "validasi"){?>
                                         
-                                        <span class="validasi-c"><?= $row->status_laporan;?></span>
+                                        <span class="validasi-c"><?= $row['status_laporan'];?></span>
                                     
-                                    <?php } else if($row->status_laporan == "verifikasi"){?>
+                                    <?php } else if($row['status_laporan'] == "verifikasi"){?>
                                         
-                                        <span class="verifikasi-c"><?= $row->status_laporan;?></span>
+                                        <span class="verifikasi-c"><?= $row['status_laporan'];?></span>
                                         <div class="footer-laporan">
                                             
-                                            <button type='button' class='btn btn-success' data-toggle="modal" data-target="#<?= $row->id_laporan;?>-m-status">Validasi</button>
+                                            <button type='button' class='btn btn-success' data-toggle="modal" data-target="#<?= $row['id_laporan'];?>-m-status">Validasi</button>
                                    
                                         </div>
                                     
@@ -107,10 +103,10 @@
  
     <section id="modal" class="about-us-section-1">
         <?php 
-        if ($data_laporan != null){
-          foreach($data_laporan as $la) { ?>
+        if ($laporan != null){
+          foreach($laporan as $la) { ?>
 
-          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-status">
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la['id_laporan'];?>-m-status">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class='modal-header'>
@@ -121,11 +117,11 @@
 
                   </div>
                   <div class='modal-body'>
-                      <p>Apakah anda yakin untuk mengubah status Laporan <?= $la->status_laporan;?> menjadi validasi (pelanggaran dianggap telah diproses).</p>
+                      <p>Apakah anda yakin untuk mengubah status Laporan <?= $la['status_laporan'];?> menjadi validasi (pelanggaran dianggap telah diproses).</p>
                   </div>
                   <div class='modal-footer'>
                     
-                    <a href="<?php echo base_url('instansi/instansiController/update_status')?>/<?= $la->id_laporan;?>">
+                    <a href="<?php echo base_url('instansiController/update_status')?>/<?= $la['id_laporan'];?>">
                         <button type='button' class='btn btn-primary'>Ya</button>
                     </a>
 
@@ -137,11 +133,11 @@
             </div>
 
 
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la->id_laporan;?>-m-tampil">
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $la['id_laporan'];?>-m-tampil">
               <div class="modal-dialog modal-lg">
                  <div class='modal-content'>
                   <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLongTitle'><?= $la->judul_laporan?></h5>
+                    <h5 class='modal-title' id='exampleModalLongTitle'><?= $la['judul_laporan'];?></h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                             <span aria-hidden='true'>X</span>
                     </button>
@@ -149,20 +145,20 @@
                   </div>
                   <div class='modal-body'>
                     <div class='modal-img'>
-                        <img src="<?= $la->media;?>.jpg" class="img-responsive">
+                        <img src="<?= $la['media'];?>.jpg" class="img-responsive">
                     </div>
                     
                     <span></span>
-                    <span>Tanggal Lapor   : <?= $la->tgl_lapor;?></span><br>
-                    <span>Lokasi Kejadian : <?= $la->lokasi_kejadian;?></span><br>
-                    <span>Satus Laporan : <?= $la->status_laporan;?></span><br>
-                    <p><?= $la->keterangan;?></p>
+                    <span>Tanggal Lapor   : <?= $la['tgl_lapor'];?></span><br>
+                    <span>Lokasi Kejadian : <?= $la['lokasi_kejadian'];?></span><br>
+                    <span>Satus Laporan : <?= $la['status_laporan'];?></span><br>
+                    <p><?= $la['keterangan'];?></p>
                   </div>
                   <div class='modal-footer'>
-                    <?php if($la->status_laporan == "terkirim") {?>
+                    <?php if($la['status_laporan'] == "verifikasi") {?>
                               
-                            <a href="<?php echo base_url('instansi/instansiController/update_status')?>/<?= $la->id_laporan;?>">
-                              <button type='button' class='btn btn-success'>Verivikasi</button>
+                            <a href="<?php echo base_url('instansi/instansiController/update_status')?>/<?= $la['id_laporan'];?>">
+                              <button type='button' class='btn btn-success'>Verifikasi</button>
                             </a>
 
                     <?php } ?>
