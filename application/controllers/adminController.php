@@ -116,22 +116,60 @@ class AdminController extends CI_Controller {
         $this->load->view('view_admin_laporan',$data);
     }
 
- //    public function page_berita() 
- //    {
- //    	$data['username'] = $this->session->userdata('username');
+    public function page_berita() 
+    {
+    	$data['username'] = $this->session->userdata('username');
 
- //    	$data['id_user'] = $this->session->userdata('id_user');
+    	$data['id_user'] = $this->session->userdata('id_user');
 
-	// 	$id = $this->session->userdata('id_user');
+		$id = $this->session->userdata('id_user');
 
-	// 	$id_admin = $this->model_admin->get_id_admin($id);
 
-	// 	$data['data_berita'] = $this->model_admin->get_berita();
+		$admin = new Admin;
+		$admin = Admin::where('id_user', $id)->first();
 
- //    	$data['data_laporan_valid'] = $this->model_admin->get_laporan_valid();
 
- //        $this->load->view('view_admin_berita',$data);
- //    }
+
+		$laporan = new Laporan;
+		$laporan = Laporan::where('status_laporan', 'validasi')->get();
+
+		$berita = new Berita;
+		$berita = Berita::where('id_admin', $admin->id_admin)->get();
+		$adm    = Berita::admin()->get();
+		$lap    = Berita::laporan()->get();
+
+		$data['laporan'] = $laporan; 
+		$data['admin'] = $admin;
+		$data['berita'] = [];
+	 	$temp = [];
+		foreach ($berita as $key => $val) {
+			foreach ($adm as $key => $val2) {
+					if($val->id_admin == $val2->id_admin){
+						$temp['nama'] = $val2->nama;
+						$temp['id_admin'] = $val2->id_admin;
+						$temp['id_user'] = $val2->id_user;
+					}	
+			}
+			foreach ($lap as $key => $val3) {
+					if($val->id_laporan == $val3->id_laporan){
+						$temp['id_laporan'] = $val3->id_laporan;
+						$temp['judul_laporan'] = $val3->judul_laporan;
+						$temp['tgl_lapor'] = $val3->tgl_lapor;
+						$temp['lokasi_kejadian'] = $val3->lokasi_kejadian;
+						$temp['keterangan'] = $val3->keterangan;
+						$temp['media'] = $val3->media;
+						$temp['status_laporan'] = $val3->status_laporan;	
+					}
+			}
+			$temp['id_berita'] = $val->id_berita;
+			$temp['isi_berita'] = $val->isi_berita;
+
+
+			array_push($data['berita'], $temp);	
+		}
+
+		$this->load->view('view_admin_berita',$data);
+    }
 
 	public function register_admin() {
 
@@ -188,24 +226,26 @@ class AdminController extends CI_Controller {
 
 	}
 
-	// public function add_berita() {
+	public function add_berita() {
 
-	// 	$data['id_user'] = $this->session->userdata('id_user');
+		$data['username'] = $this->session->userdata('username');
 
-	// 	$id = $this->session->userdata('id_user');
+    	$data['id_user'] = $this->session->userdata('id_user');
 
-	// 	$id_admin = $this->model_admin->get_id_admin($id);
+		$id = $this->session->userdata('id_user');
 
-	// 	$data = array('id_admin' => $id_admin,
-	// 				  'id_laporan' => $this->input->post('addlaporan', TRUE),
-	// 				  'isi_berita'   => $this->input->post('keterangan', TRUE)
-	// 				 );
+		$admin = new Admin;
+		$admin = Admin::where('id_user', $id)->first();
 
-	// 	$hasil = $this->model_admin->add_berita($data);
+		$berita = new Berita;
+		$berita->id_admin 	= $admin->id_admin;
+		$berita->id_laporan = $this->input->post('addlaporan', TRUE);
+		$berita->isi_berita = $this->input->post('keterangan', TRUE);
+		$berita->save();
 
-	// 	redirect('admin/AdminController/page_berita');
+		redirect('adminController/page_berita');
 
-	// }
+	}
 
 	public function update_kategori() {
 
@@ -222,27 +262,26 @@ class AdminController extends CI_Controller {
 
 	}
 
-	// public function update_berita() {
+	public function update_berita() {
 
-	// 	$idber= $this->uri->segment(4);
+		$idb= $this->uri->segment(3);
 
-	// 	echo $idber;
-	// 	$id = $this->session->userdata('id_user');
+		$id = $this->session->userdata('id_user');
 
-	// 	$id_admin = $this->model_admin->get_id_admin($id);
+		$admin = new Admin;
+		$admin = Admin::where('id_user', $id)->first();
 
-	// 	$data = array('id_admin' => $id_admin,
-	// 				  'id_laporan' => $this->input->post('addlaporan', TRUE),
-	// 				  'isi_berita'   => $this->input->post('keterangan', TRUE)
-	// 				 );
+		$berita = new Berita;
+		$berita = Berita::where('id_berita',$idb)->first();
 
+		$berita->id_admin 	= $admin->id_admin;
+		$berita->id_laporan = $this->input->post('addlaporan', TRUE);
+		$berita->isi_berita = $this->input->post('keterangan', TRUE);
+		$berita->save();
 
+		redirect('adminController/page_berita');
 
-	// 	$hasil = $this->model_admin->update_berita($data,$idber);
-
-	// 	redirect('admin/AdminController/page_berita');
-
-	// }
+	}
 
 
 	public function delete_kategori() {
@@ -256,15 +295,16 @@ class AdminController extends CI_Controller {
 
 	}
 
-	// public function delete_berita() {
+	public function delete_berita() {
 
-	// 	$data= $this->uri->segment(4);
+		$id= $this->uri->segment(3);
 		
-	// 	$del = $this->model_admin->delete_berita($data);
+		$berita = new Berita;
+		$berita = Berita::delete($id);
 
-	// 	redirect('admin/adminController/page_berita');
+		redirect('adminController/page_berita');
 
-	// }
+	}
 
 	public function delete_instansi() {
 

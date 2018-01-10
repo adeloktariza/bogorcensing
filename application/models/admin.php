@@ -11,4 +11,10 @@ class Admin extends Elegant\Model {
   
   }
 
+  public function scopeBerita(){
+
+  	return $this->belongsTo('Berita');
+  
+  }
+
 }

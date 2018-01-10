@@ -10,37 +10,37 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Dashboard</span>
           </a>
         </li>
         <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Laporan">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_laporan'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_laporan'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Laporan</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Berita">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_berita'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_berita'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Berita</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kategori">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_kategori'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_kategori'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Kategori</span>
           </a>
         </li>
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kategori">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_admin'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_register_admin'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Admin Panel</span>
           </a>
         </li>
         <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Kategori">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_instansi'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_register_instansi'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Instansi Panel</span>
           </a>

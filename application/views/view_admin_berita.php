@@ -79,12 +79,12 @@
 
        <div class="row wrap-section">
           <div class="col-md-11 form-add-kategori">
-              <?php echo form_open_multipart("admin/adminController/add_berita"); ?>
+              <?php echo form_open_multipart("adminController/add_berita"); ?>
                   <form>
                         <div class="form-group">
                           <label for="exampleSelect1">Pilih Berita</label>
                           <select class="form-control" id="exampleSelect1" name="addlaporan">
-                              <?php foreach($data_laporan_valid as $ber) { ?>
+                              <?php foreach($laporan as $ber) { ?>
                                   <option value="<?= $ber->id_laporan;?>"><?= $ber->judul_laporan;?></option>
                               <?php } ?>
                           </select>
@@ -121,24 +121,24 @@
                   <tbody>
                     <?php 
 
-                    if ($data_berita != null){
+                    if ($berita != null){
 
                       $i=1;
 
-                    foreach($data_berita as $la) { ?>
+                    foreach($berita as $la) { ?>
                         <tr>
                           <th class="center"><?= $i;?></th>
-                          <th><p data-toggle="modal" data-target="#<?= $la->id_laporan;?>-m-tampil">
-                                  <?= $la->judul_laporan; ?>
+                          <th><p data-toggle="modal" data-target="#<?= $la['id_laporan'];?>-m-tampil">
+                                  <?= $la['judul_laporan']; ?>
                               </p>
                           </th>
-                          <th><?= $la->lokasi_kejadian;?></th>
-                          <th class="center"><?= $la->nama;?></th>
+                          <th><?= $la['lokasi_kejadian'];?></th>
+                          <th class="center"><?= $la['nama'];?></th>
                           <th class="colbtn" width="200px">
 
-                            <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $la->id_berita;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $la['id_berita'];?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
-                            <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#<?= $la->id_berita;?>-m-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#<?= $la['id_berita'];?>-m-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 
 
                           </th>
@@ -180,11 +180,11 @@
 
     <?php 
 
-    if ($data_berita != null){
+    if ($berita != null){
 
-    foreach($data_berita as $kat) { ?>
+    foreach($berita as $kat) { ?>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_berita;?>-m-hapus">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat['id_berita'];?>-m-hapus">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class='modal-header'>
@@ -195,11 +195,11 @@
 
           </div>
           <div class='modal-body'>
-              <p>Apakah anda yakin untuk menghapus Berita <?= $kat->judul_laporan;?></p>
+              <p>Apakah anda yakin untuk menghapus Berita <?= $kat['judul_laporan'];?></p>
           </div>
           <div class='modal-footer'>
             
-            <a href="<?php echo base_url('admin/adminController/delete_berita')?>/<?= $kat->id_berita;?>">
+            <a href="<?php echo base_url('adminController/delete_berita')?>/<?= $kat['id_berita'];?>">
                 <button type='button' class='btn btn-primary'>Ya</button>
             </a>
 
@@ -210,7 +210,7 @@
       </div>
     </div>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat->id_berita;?>-m-edit">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $kat['id_berita'];?>-m-edit">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class='modal-header'>
@@ -222,7 +222,7 @@
           </div>
           <div class='modal-body'>
 
-          <?php echo form_open("admin/adminController/update_berita/$kat->id_berita"); ?>
+          <?php echo form_open("adminController/update_berita/".$kat['id_berita']); ?>
                   <form>
                         <div class="form-group">
                           <label for="exampleSelect1">Pilih Berita</label>
@@ -230,7 +230,7 @@
 
                               <option value="<?= $ber->id_laporan;?>"><?= $ber->judul_laporan;?></option>
 
-                              <?php foreach($data_laporan_valid as $ber) { ?>
+                              <?php foreach($laporan as $ber) { ?>
                                   <option value="<?= $ber->id_laporan;?>"><?= $ber->judul_laporan;?></option>
                               <?php } ?>
                           </select>
@@ -238,7 +238,7 @@
 
                         <div class="form-group">
                           <label for="exampleTextarea">Isi Berita</label>
-                          <textarea class="form-control" id="exampleTextarea" rows="4" name="keterangan"><?= $kat->isi_berita;?></textarea>
+                          <textarea class="form-control" id="exampleTextarea" rows="4" name="keterangan"><?= $kat['isi_berita'];?></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Kirim</button>

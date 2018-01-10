@@ -22,7 +22,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Berita">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_berita'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_berita'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Berita</span>
           </a>

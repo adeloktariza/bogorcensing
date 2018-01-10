@@ -19,4 +19,10 @@ class Laporan extends Elegant\Model {
   
   }
 
+  public function scopeBerita(){
+
+  	return $this->belongsTo('Berita');
+  
+  }
+
 }
