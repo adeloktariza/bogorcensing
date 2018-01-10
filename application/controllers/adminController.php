@@ -47,16 +47,19 @@ class AdminController extends CI_Controller {
 		$this->load->view('view_admin_register', $data);
 	}
 
-	// public function page_register_instansi() {
-	// 	$data['username'] = $this->session->userdata('username');
-	// 	$data['id_user'] = $this->session->userdata('id_user');
+	public function page_register_instansi() {
+		$data['username'] = $this->session->userdata('username');
+		$data['id_user'] = $this->session->userdata('id_user');
 
-	// 	$id = $this->session->userdata('id_user');
+		$id = $this->session->userdata('id_user');
 
-	// 	$data['data_dinas'] = $this->model_admin->get_dinas();
+		$dinas = new Instansi;
+		$dinas = Instansi::all();
 
-	// 	$this->load->view('view_instansi_register', $data);
-	// }
+		$data['instansi'] = $dinas;
+
+		$this->load->view('view_instansi_register', $data);
+	}
 
 	// public function page_kategori() 
  //    {
@@ -119,29 +122,27 @@ class AdminController extends CI_Controller {
 
 	}
 
-	// public function register_instansi() {
-	// 	$data = array('username' => $this->input->post('addUsername', TRUE),
-	// 				  'password' => md5($this->input->post('addPassword', TRUE)),
-	// 				  'level'    => 1 
-	// 				 );
+	public function register_instansi() {
+
+		$users = new User;
+
+		$users->username 	= $this->input->post('addUsername', TRUE);
+		$users->password 	= md5($this->input->post('addPassword', TRUE));
+		$users->level 		= 0;
+		$users->save();
 
 
-	// 	$hasil = $this->model_register->add_user($data);
+		$instansi = new Instansi;
+		$instansi->nama 			= $this->input->post('addName', TRUE);
+		$instansi->email 			= $this->input->post('addEmail', TRUE);
+		$instansi->no_telpon 		= $this->input->post('addNumber', TRUE);
+		$instansi->alamat 			= $this->input->post('addAddress', TRUE);
+		$instansi->id_user			= $users->id_user;
+		$instansi->save();
 
+		redirect('adminController/page_register_instansi');
 
-	// 	$data2= array(
-	// 				  'nama' => $this->input->post('addName', TRUE),
-	// 				  'email' => $this->input->post('addEmail', TRUE),
-	// 				  'no_telpon' => $this->input->post('addNumber', TRUE),
-	// 				  'alamat' => $this->input->post('addAddress', TRUE),
-	// 				  'id_user' => $hasil
-	// 				 );
-
-	// 	$hasil2 = $this->model_register->add_instansi($data2);
-
-	// 	redirect('admin/AdminController/page_register_instansi');
-
-	// }
+	}
 
 	// public function add_kategori() {
 	// 	$data = array('nama_kategori' => $this->input->post('addName', TRUE),
@@ -230,15 +231,20 @@ class AdminController extends CI_Controller {
 
 	// }
 
-	// public function delete_laporan() {
+	public function delete_instansi() {
 
-	// 	$data= $this->uri->segment(4);
+		$id_instansi = $this->uri->segment(3);
+		$id_user = $this->uri->segment(4);
 		
-	// 	$del = $this->model_admin->delete_laporan($data);
+		$instansi = new Instansi;
+		$instansi = Instansi::delete($id_instansi);
 
-	// 	redirect('admin/adminController/page_laporan');
+		$user = new User;
+		$user = User::delete($id_user);
 
-	// }
+		redirect('adminController/page_register_instansi');
+
+	}
 
 	// public function update_status() {
 

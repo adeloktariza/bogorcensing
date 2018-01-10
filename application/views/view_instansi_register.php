@@ -10,37 +10,37 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Dashboard</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_laporan'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_laporan'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Laporan</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Berita">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_berita'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_berita'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Berita</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kategori">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_kategori'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_kategori'); ?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">&nbsp;Kategori</span>
           </a>
         </li>
          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kategori">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_admin'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_register_admin'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Admin Panel</span>
           </a>
         </li>
         <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Kategori">
-          <a class="nav-link" href="<?php echo base_url('admin/adminController/page_register_instansi'); ?>">
+          <a class="nav-link" href="<?php echo base_url('adminController/page_register_instansi'); ?>">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">&nbsp;Instansi Panel</span>
           </a>
@@ -72,7 +72,7 @@
 	      <!-- Breadcrumbs-->
 	      <ol class="breadcrumb">
 	        <li class="breadcrumb-item">
-	          <a href="#">Admin Panel</a>
+	          <a href="#">Instansi Panel</a>
 	        </li>
 	        <li class="breadcrumb-item active">Instansi</li>
 	      </ol>
@@ -81,7 +81,7 @@
       <div class="row wrap-section">
           <div class="col-md-6 form-add-kategori">
 
-              <?php echo form_open("admin/adminController/register_instansi"); ?>
+              <?php echo form_open("adminController/register_instansi"); ?>
 
                 <form>
                   <div class="form-group">
@@ -133,7 +133,6 @@
                   <thead>
                       <tr>
                           <th>No</th>
-                          <th>username</th>
                           <th>Nama Instansi</th>
                           <th>Email</th>
                           <th width="200px">Aksi</th>
@@ -146,15 +145,14 @@
 
                     $i = 1;
 
-                    foreach($data_dinas as $di) { ?>
+                    foreach($instansi as $in) { ?>
                         <tr>
                           <th class="col1"><?= $i; ?></th>
-                          <th><?= $di->username; ?></th>
-                          <th><?= $di->nama;?></th>
-                          <th><?= $di->email;?></th>
+                          <th><?= $in->nama;?></th>
+                          <th><?= $in->email;?></th>
                           <th class="colbtn" width="200px">
 
-                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $di->id_instansi;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                              <button type='button' class='btn btn-danger' data-toggle="modal" data-target="#<?= $in->id_instansi;?>-m-hapus"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
                           </th>
                         </tr>
@@ -175,9 +173,9 @@
 
     <!-- Logout Modal-->
 
-        <?php foreach($data_dinas as $di) { ?>
+        <?php foreach($instansi as $in) { ?>
 
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $di->id_instansi;?>-m-hapus">
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="<?= $in->id_instansi;?>-m-hapus">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class='modal-header'>
@@ -188,11 +186,11 @@
 
                   </div>
                   <div class='modal-body'>
-                      <p>Apakah anda yakin untuk menghapus Instansi <?= $di->nama;?></p>
+                      <p>Apakah anda yakin untuk menghapus Instansi <?= $in->nama;?></p>
                   </div>
                   <div class='modal-footer'>
                     
-                    <a href='<?php echo base_url('admin/adminController/update_kategori')?>/<?= $kat->id_kategori;?>'>
+                    <a href='<?php echo base_url('adminController/delete_instansi')?>/<?= $in->id_instansi;?>/<?= $in->id_user;?>'>
                         <button type='button' class='btn btn-primary'>Ya</button>
                     </a>
 
