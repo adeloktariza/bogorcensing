@@ -19,8 +19,6 @@
               </div>
             </li>
             <li><a href="#berita">Berita</a></li>
-            <li><a href="#">Tentang Kami</a></li>
-            <li><a href="#">Kontak</a></li>
 
             <li class="f-right"><a href="<?php echo base_url('login/logout')?>">Keluar</a></li>
             <li class="f-right"><a href="#">Hai <?= $username?></a></li>    

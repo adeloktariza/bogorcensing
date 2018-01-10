@@ -77,8 +77,12 @@
 	        <li class="breadcrumb-item active">Laporan</li>
 	      </ol>
 
+       <h2>Tabel Laporan</h2>
+
        <div class="row wrap-section">
+
           <div class="col-md-11 form-add-kategori">
+
               <table class="table table-bordered">
 
 

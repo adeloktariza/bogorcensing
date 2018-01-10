@@ -77,7 +77,7 @@
 	        <li class="breadcrumb-item active">Instansi</li>
 	      </ol>
 
-
+      <h2>Tambah Instansi</h2>
       <div class="row wrap-section">
           <div class="col-md-6 form-add-kategori">
 
@@ -125,6 +125,8 @@
 	     
 	    </div>
 
+       <h2>Tabel Instansi</h2>
+      
        <div class="row wrap-section">
           <div class="col-md-11 form-add-kategori">
               <table class="table table-bordered">

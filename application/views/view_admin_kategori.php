@@ -76,7 +76,7 @@
 	        </li>
 	        <li class="breadcrumb-item active">Kategori</li>
 	      </ol>
-
+        <h2>Tambah Kategori</h2>
         <div class="row wrap-section">
           <div class="col-md-6 form-add-kategori">
               <?php echo form_open("adminController/add_kategori"); ?>
@@ -105,7 +105,7 @@
 
           </div>
         </div>
-
+        <h2>Tabel Kategori</h2>
         <div class="row wrap-section">
           <div class="col-md-11 form-add-kategori">
               <table class="table table-bordered">

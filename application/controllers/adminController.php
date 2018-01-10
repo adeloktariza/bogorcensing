@@ -199,7 +199,7 @@ class AdminController extends CI_Controller {
 		$users = new User;
 		$users->username 	= $this->input->post('addUsername', TRUE);
 		$users->password 	= md5($this->input->post('addPassword', TRUE));
-		$users->level 		= 0;
+		$users->level 		= 1;
 		$users->save();
 
 

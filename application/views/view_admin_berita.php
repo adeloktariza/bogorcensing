@@ -77,6 +77,8 @@
 	        <li class="breadcrumb-item active">Berita</li>
 	      </ol>
 
+       <h2>Tambah Berita</h2>
+
        <div class="row wrap-section">
           <div class="col-md-11 form-add-kategori">
               <?php echo form_open_multipart("adminController/add_berita"); ?>
@@ -101,6 +103,8 @@
 
           </div>
        </div>
+
+       <h2>Tabel Berita</h2>
 
        <div class="row wrap-section">
           <div class="col-md-11 form-add-kategori">
